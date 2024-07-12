@@ -13048,7 +13048,7 @@ textarea.form-control-lg {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 3.5rem;
+  height: 8rem;
   padding: 0.8125rem 0.5rem;
   overflow: hidden;
   font-size: 1.25rem;
@@ -13069,7 +13069,7 @@ textarea.form-control-lg {
 .sidebar-brand .brand-link .brand-image {
   float: left;
   width: auto;
-  max-height: 33px;
+  max-height: 100px;
   line-height: 0.8;
 }
 .sidebar-brand .brand-link .brand-image-xs {

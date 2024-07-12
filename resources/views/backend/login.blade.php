@@ -18,17 +18,20 @@
 
 <body class="login-page bg-body-secondary">
     <div class="login-box">
-        <div class="login-logo"> <a href="/"><img src="/assets/vega logoO.png" alt=""></a> </div> <!-- /.login-logo -->
+   
         <div class="card">
+            <div class="login-logo"> <a href="/"><img src="/assets/vega logoO.png" alt="" class="p-3 m-3"></a> </div> <!-- /.login-logo -->
             <div class="card-body login-card-body">
-                <p class="login-box-msg">Sign in to start your session</p>
-                <form action="/getUsers" method="post">
-                    <div class="input-group mb-3"> <input type="text" class="form-control" placeholder="Username" name='user' Required>
+                <form action="/logincheck" method="post">
+                    <div class="input-group mb-3"> <input type="text" class="form-control" placeholder="email" name='email' Required>
                         <div class="input-group-text"> <span class="bi bi-envelope"></span> </div>
                     </div>
-                    <div class="input-group mb-3"> <input type="password" class="form-control" placeholder="Password" name='pass' Required>
+                    <div class="input-group mb-3"> <input type="password" class="form-control" placeholder="Password" name='password' Required>
                         <div class="input-group-text"> <span class="bi bi-lock-fill"></span> </div>
                     </div> <!--begin::Row-->
+                    @if($errors->any())
+                        <p style='color: red;' >{{$errors->first()}}</p>
+                    @endif
                     <div class="row">
                         <div class="col-8">
                             <div class="form-check"> <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"> <label class="form-check-label" for="flexCheckDefault">
@@ -36,15 +39,13 @@
                                 </label> </div>
                         </div> <!-- /.col -->
                         <div class="col-4">
+                            @csrf
                             <div class="d-grid gap-2"> <button type="submit" class="btn btn-primary">Sign In</button> </div>
                         </div> <!-- /.col -->
                     </div> <!--end::Row-->
                 </form>
                 
                 <p class="mb-1"> <a href="forgot-password.html">I forgot my password</a> </p>
-                <p class="mb-0"> <a href="register.html" class="text-center">
-                        Register a new membership
-                    </a> </p>
             </div> <!-- /.login-card-body -->
         </div>
     </div> <!-- /.login-box --> <!--begin::Third Party Plugin(OverlayScrollbars)-->

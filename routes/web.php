@@ -17,20 +17,25 @@ Route::get('/', function () {
         return view('frontend.welcome');
 });
 
-Route::get('/new', function () {
-    return view('frontend.welcome');
+
+
+Route::get('/new', function(){
+    return view('frontend.test');
 });
 
-Route::get('/admin', function () {
-    return view('backend.login');
+Route::get('/login', function () {
+         return view('backend.login');
+     });
+
+Route::get('/logout', 'UserController@logout');
+
+Route::post('/logincheck', 'UserController@authenticate');
+
+Route::group(['middleware'=> 'auth'], function(){
+    Route::get('/admin', function () {
+        return view('backend.dashboard');
+    });   
 });
 
-Route::get('/dashboard', function () {
-    return view('backend.dashboard');
-});
-
-
-
-Route::post('/getUsers', 'UserController@getUsers');
-             
+       
 
