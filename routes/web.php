@@ -13,11 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-        return view('frontend.welcome');
-});
-
-
+Route::get('/', 'FrontendController@getData');
+Route::post('/sendMessage', 'FrontendController@setMessage');
 
 Route::get('/new', function(){
     return view('frontend.test');
@@ -35,7 +32,15 @@ Route::group(['middleware'=> 'auth'], function(){
     Route::get('/admin', function () {
         return view('backend.dashboard');
     });   
+    
+    Route::get('/about', 'AboutController@getAbout');
+    Route::post('/setAbout', 'AboutController@setAbout');
+    Route::get('/message', 'MessageController@getMessage');
+    Route::get('/user', 'UserController@getPeople');
+    Route::post('/setUser', 'UserController@setPeople');
+    Route::post('/removeUser', 'UserController@removeUser');
 });
 
-       
-
+// Route::get('/about', function () {
+//         return view('backend.about');
+//     }); 
