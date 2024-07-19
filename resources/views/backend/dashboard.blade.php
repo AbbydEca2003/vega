@@ -20,7 +20,7 @@
         @include('backend.topSidebar')
         <main class="app-main">
             <div class="container-fluid">
-              
+              @include('backend.dashboardHome')
             </div>
         </main><!--begin::Footer-->
         @include('backend.footer')

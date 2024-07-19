@@ -9,7 +9,9 @@
     <link rel="stylesheet" href="/css/adminlte.css"><!--end::Required Plugin(AdminLTE)--><!-- apexcharts -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/apexcharts@3.37.1/dist/apexcharts.css" integrity="sha256-4MX+61mt9NVvvuPjUWdUdyfZfxSB1/Rf9WtqRHgG5S0=" crossorigin="anonymous"><!-- jsvectormap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jsvectormap@1.5.3/dist/css/jsvectormap.min.css" integrity="sha256-+uGLJmmTKOqBr+2E6KDYs/NRsHxSkONXFHUL0fy2O/4=" crossorigin="anonymous">
-    
+    <script>
+        let global;
+    </script>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 integrity="sha384q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
 crossorigin="anonymous"></script> 
@@ -33,7 +35,7 @@ crossorigin="anonymous"></script>
                                         <button type="button" class="btn btn-outline-primary" data-mdb-ripple-init><i class="bi bi-search"></i> search</button>
                                     </div>
                                 </div> <!-- /.card-header -->
-                                <div class="card-body">
+                                <div class="card-body">{!! \Session::get('success') !!}
                                     <table class="table table-bordered">
                                         <thead>
                                             <tr>
@@ -53,24 +55,15 @@ crossorigin="anonymous"></script>
                                                 <td>
                                                     <div class="row">
                                                         <div class="col">
-                                                            <button class=" btn btn-primary" data-toggle="modal" data-target="#editUser" id="{{$user->id}}">Edit</button>
+                                                            <button class=" btn btn-primary" data-toggle="modal" data-target="#editUser">Edit</button>
                                                         </div>
                                                         <div class="col">
-                                                            <button class="btn btn-danger" data-toggle="modal" data-target="#removeUser" id="{{$user->id}}">Delete</button>
+                                                            <button class="btn btn-danger" data-toggle="modal" data-target="#removeUser" onclick="disp({{$user->id}})">Delete</button>
                                                         </div>
                                                     </div>
                                                 </td>
                                             </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                </div> <!-- /.card-body -->
-                                </div>
-                </main><!--begin::Footer-->
-                @include('backend.footer')          
-    </div>
-    <script src="js/adminlte.js"></script> 
-    <!-- Modal -->
+                                            <!-- Modal -->
             <div class="modal fade" id="removeUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -82,9 +75,10 @@ crossorigin="anonymous"></script>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <form action="/removeUser" method="post">
+                <form action="/removeUser" method="post" >
                     @csrf
-                    <input type="submit" value="Delete" class="btn btn-danger" >
+                    <div id="row"></div>
+                    <input type="submit" value="Delete" class="btn btn-danger" onclick="find()">
                 </form>
             </div>
             </div>
@@ -96,10 +90,10 @@ crossorigin="anonymous"></script>
             <div class="modal-content">
             <div class="modal-header">
 
-                <h5 class="modal-title" id="setUser">Edit User {{$user->name}}</h5>
+                <h5 class="modal-title" id="editUser">Edit User {{$user->name}}</h5>
             </div>
             <div class="modal-body">
-            <form action="/setUser" method="post">
+            <form action="/editUser" method="post">
                     @csrf
                     <div class="input-group mb-3"> <input type="text" class="form-control" placeholder="Full Name" name="username">
                         <div class="input-group-text"> <span class="bi bi-person"></span> </div>
@@ -110,12 +104,10 @@ crossorigin="anonymous"></script>
                     <div class="input-group mb-3"> <input type="password" class="form-control" placeholder="Password" name="password">
                         <div class="input-group-text"> <span class="bi bi-lock-fill"></span> </div>
                     </div> <!--begin::Row-->
-                </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <form action="/removeUser">
-                    <input type="hidden" value="qw" name="id">
+                    <input type="hidden" value="qw">
                     <input type="submit" value="Update" class="btn btn-primary" >
                 </form>
             </div>
@@ -131,7 +123,7 @@ crossorigin="anonymous"></script>
                 <h5 class="modal-title" id="addUser">Add new User</h5>
             </div>
             <div class="modal-body">
-                <form action="/setUser" method="post">
+                <form action="/setUser" method="post" id="{{$user->id}}">
                     @csrf
                     <div class="input-group mb-3"> <input type="text" class="form-control" placeholder="Full Name" name="username">
                         <div class="input-group-text" > <span class="bi bi-person"></span> </div>
@@ -151,8 +143,27 @@ crossorigin="anonymous"></script>
             </div>
         </div>
         </div>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div> <!-- /.card-body -->
+                                </div>
+                </main><!--begin::Footer-->
+                @include('backend.footer')          
+    </div>
+    <script src="js/adminlte.js"></script> 
+    <script>
+        function disp(n){
+            
+            global = n;
+            document.getElementById('row').innerHTML = "<input type='hidden' id='row' name='row' value="+global+">";
+        }
+        function t(){
+            return global;
+        }
+    </script>
         
-
+        
 
 </body>
 </html>

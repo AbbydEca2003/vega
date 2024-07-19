@@ -36,9 +36,10 @@ Route::group(['middleware'=> 'auth'], function(){
     Route::get('/about', 'AboutController@getAbout');
     Route::post('/setAbout', 'AboutController@setAbout');
     Route::get('/message', 'MessageController@getMessage');
-    Route::get('/user', 'UserController@getPeople');
-    Route::post('/setUser', 'UserController@setPeople');
+    Route::get('/user', 'UserController@getUser');
+    Route::post('/setUser', 'UserController@setUser');
     Route::post('/removeUser', 'UserController@removeUser');
+    Route::post('/editUser', 'UserController@editUser');
 });
 
 // Route::get('/about', function () {

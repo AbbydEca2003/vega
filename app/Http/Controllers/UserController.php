@@ -44,18 +44,18 @@ class UserController extends Controller
         $this->users = User::all();
     }
 
-    public function getPeople(){
+    public function getUser(){
         $users = $this->users;
         return view('backend.people',['users'=>$users]);
     }
 
-    public function setPeople (Request $request){
+    public function setUser (Request $request){
         $newUser = $request->validate([
             'username' => ['required'],
             'password' => ['required'],
             'email' => ['required', 'email'],
         ]);
-
+        //dd($newUser);
         $new = new User();
         $new->name =  $newUser['username'];
         $new->email =  $newUser['email'];
@@ -65,21 +65,31 @@ class UserController extends Controller
         return redirect('/user')->with('success','User registered success');
     }
 
-    public function removeUser(Request $request){
-        
-        $newUser = $request->validate([
-            'id' => ['required'],
+    public function editUser (Request $request): RedirectResponse{
+        $eUser = $request->validate([
+            'username' => ['required'],
+            'password' => ['required'],
+            'email' => ['required', 'email'],
         ]);
-        dd($newUser->id);
-        $user = User::find('2');
-
-        if($user){
-            $user->delete();
-            return redirect('/user')->with('success','User removed success');
-        }else{
-            return redirect('/');
-        }
         
+        $n = User::find(5);
+        
+        $n->name =  $eUser['username'];
+        $n->email =  $eUser['email'];
+        $n->password =  Hash::make($eUser['password']);
+        $n->email_verified_at =  Carbon::now();
+        //dd($new);
+        $n->save();
+        return redirect('/user')->with('success','User edit success');
+    }
+
+    public function removeUser(Request $request): RedirectResponse{
+        $rem_User = $request->validate([
+            'row' => ['required'],
+        ]);
+        dd($rem_User['row']);
+        User::destroy($rem_User['del']);
+        return redirect('/user')->with('success','User removed success');
     }
   
 }

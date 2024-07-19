@@ -98,37 +98,7 @@
                                         <p>People</p>
                                     </a> </li>
                         </li>
-                        <li class="nav-item"> <a href="#" class="nav-link"> <i class="nav-icon bi bi-box-seam-fill"></i>
-                                <p>
-                                    Widgets
-                                    <i class="nav-arrow bi bi-chevron-right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item"> <a href="./widgets/small-box.html" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
-                                        <p>Small Box</p>
-                                    </a> </li>
-                                <li class="nav-item"> <a href="./widgets/info-box.html" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
-                                        <p>info Box</p>
-                                    </a> </li>
-                                <li class="nav-item"> <a href="./widgets/cards.html" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
-                                        <p>Cards</p>
-                                    </a> </li>
-                            </ul>
-                        </li>
-                        <li class="nav-header">User</li>
-                        <li class="nav-item"> <a href="#" class="nav-link"> <i class="nav-icon bi bi-table"></i>
-                                <p>
-                                    Tables
-                                    <i class="nav-arrow bi bi-chevron-right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item"> <a href="./tables/simple.html" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
-                                        <p>Simple Tables</p>
-                                    </a> </li>
-                            </ul>
-                        </li>
+                        
                         <li class="user-footer"><a href="/logout" class="btn">Sign out</a> </li> <!--end::Menu Footer-->
                     </ul> <!--end::Sidebar Menu-->
                 </nav>
