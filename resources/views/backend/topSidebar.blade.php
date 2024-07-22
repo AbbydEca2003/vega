@@ -98,7 +98,16 @@
                                         <p>People</p>
                                     </a> </li>
                         </li>
-                        
+                        <li class="nav-item nav-treeview"> 
+                            <li class="nav-item"> <a href="/service" class="nav-link"> <i class="nav-icon bi bi-pencil-square"></i>
+                                        <p>Service</p>
+                                    </a> </li>
+                        </li>
+                        <li class="nav-item nav-treeview"> 
+                            <li class="nav-item"> <a href="/menu" class="nav-link"> <i class="nav-icon bi bi-pencil-square"></i>
+                                        <p>Menu</p>
+                                    </a> </li>
+                        </li>
                         <li class="user-footer"><a href="/logout" class="btn">Sign out</a> </li> <!--end::Menu Footer-->
                     </ul> <!--end::Sidebar Menu-->
                 </nav>

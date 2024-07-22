@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,16 +10,13 @@
     <link rel="stylesheet" href="/css/adminlte.css"><!--end::Required Plugin(AdminLTE)--><!-- apexcharts -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/apexcharts@3.37.1/dist/apexcharts.css" integrity="sha256-4MX+61mt9NVvvuPjUWdUdyfZfxSB1/Rf9WtqRHgG5S0=" crossorigin="anonymous"><!-- jsvectormap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jsvectormap@1.5.3/dist/css/jsvectormap.min.css" integrity="sha256-+uGLJmmTKOqBr+2E6KDYs/NRsHxSkONXFHUL0fy2O/4=" crossorigin="anonymous">
-    <script>
-        let global;
-    </script>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 integrity="sha384q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
 crossorigin="anonymous"></script> 
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" 
 integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
 crossorigin="anonymous"></script> 
-    <title>Vega | About</title>
+    <title>Vega | People</title>
 </head>
 <body>
     <div class="layout-fixed sidebar-expand-lg bg-body-tertiary">
@@ -31,8 +29,11 @@ crossorigin="anonymous"></script>
                 <div class="card-header">
                                     <h3 class="card-title"><h1>All Users</h1></h3>
                                     <div class="input-group">
-                                        <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-                                        <button type="button" class="btn btn-outline-primary" data-mdb-ripple-init><i class="bi bi-search"></i> search</button>
+                                        <form action="/search" method="post">
+                                            @csrf
+                                            <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" name="search" required/>
+                                            <input type="submit">
+                                        </form>
                                     </div>
                                 </div> <!-- /.card-header -->
                                 <div class="card-body">{!! \Session::get('success') !!}
@@ -42,7 +43,6 @@ crossorigin="anonymous"></script>
                                                 <th style="width: 10px">#</th>
                                                 <th>Name</th>
                                                 <th>Email</th>
-                                                <th>Phone</th>
                                                 <th>Edit</th>
                                         </thead>
                                         <tbody>
@@ -51,19 +51,18 @@ crossorigin="anonymous"></script>
                                                 <td id="sn">{{$user->id}}.</td>
                                                 <td>{{$user->name}}</td>
                                                 <td>{{$user->email}}</td>
-                                                <td>{{$user->phone}}</td>
                                                 <td>
                                                     <div class="row">
                                                         <div class="col">
-                                                            <button class=" btn btn-primary" data-toggle="modal" data-target="#editUser">Edit</button>
+                                                            <button class=" btn btn-primary" data-toggle="modal" data-target="#editUser" onclick="change({{$user->id}})">Edit</button>
                                                         </div>
                                                         <div class="col">
-                                                            <button class="btn btn-danger" data-toggle="modal" data-target="#removeUser" onclick="disp({{$user->id}})">Delete</button>
+                                                            <button class="btn btn-danger" data-toggle="modal" data-target="#removeUser" onclick="change({{$user->id}})">Delete</button>
                                                         </div>
                                                     </div>
                                                 </td>
                                             </tr>
-                                            <!-- Modal -->
+                                            <!-- Modal delete user-->
             <div class="modal fade" id="removeUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -71,20 +70,22 @@ crossorigin="anonymous"></script>
                 <h5 class="modal-title" id="removeUser">Remove this user from the system?</h5>
             </div>
             <div class="modal-body">
-                User: {{$user->name}} <br>email: {{$user->email}}
+                <!-- User: {{$user->name}} <br>email: {{$user->email}} -->
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <form action="/removeUser" method="post" >
                     @csrf
-                    <div id="row"></div>
-                    <input type="submit" value="Delete" class="btn btn-danger" onclick="find()">
+                    <input type="hidden" id="user_id" name="user_id">
+                    <input type="submit" value="Delete" class="btn btn-danger">
                 </form>
             </div>
             </div>
         </div>
         </div>
-         <!-- Modal -->
+
+
+         <!-- Modal Edit user model-->
          <div class="modal fade" id="editUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -107,7 +108,7 @@ crossorigin="anonymous"></script>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <input type="hidden" value="qw">
+                    <input type="hidden" id="edit_user"name="user_id">
                     <input type="submit" value="Update" class="btn btn-primary" >
                 </form>
             </div>
@@ -115,6 +116,8 @@ crossorigin="anonymous"></script>
         </div>
         </div>
 
+
+        
          <!-- Modal -->
          <div class="modal fade" id="addUser" tabindex="-1" role="dialog" >
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -151,15 +154,13 @@ crossorigin="anonymous"></script>
                 </main><!--begin::Footer-->
                 @include('backend.footer')          
     </div>
+
     <script src="js/adminlte.js"></script> 
     <script>
-        function disp(n){
-            
-            global = n;
-            document.getElementById('row').innerHTML = "<input type='hidden' id='row' name='row' value="+global+">";
-        }
-        function t(){
-            return global;
+        function change(x){
+            alert(x);
+        document.getElementById('user_id').value = x;
+        document.getElementById('edit_user').value = x;
         }
     </script>
         

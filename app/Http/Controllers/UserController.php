@@ -66,30 +66,46 @@ class UserController extends Controller
     }
 
     public function editUser (Request $request): RedirectResponse{
-        $eUser = $request->validate([
+        $validated = $request->validate([
             'username' => ['required'],
             'password' => ['required'],
             'email' => ['required', 'email'],
+            'user_id' => ['required'],
         ]);
-        
-        $n = User::find(5);
-        
-        $n->name =  $eUser['username'];
-        $n->email =  $eUser['email'];
-        $n->password =  Hash::make($eUser['password']);
+        $userId = $validated['user_id'];
+        $n = User::find($userId);
+        $n->name =  $validated['username'];
+        $n->email =  $validated['email'];
+        $n->password =  Hash::make($validated['password']);
         $n->email_verified_at =  Carbon::now();
         //dd($new);
         $n->save();
         return redirect('/user')->with('success','User edit success');
     }
 
-    public function removeUser(Request $request): RedirectResponse{
-        $rem_User = $request->validate([
-            'row' => ['required'],
+    public function removeUser(Request $request): RedirectResponse
+    {
+        //dd($request);
+        $validated = $request->validate([
+            'user_id' => ['required'],
         ]);
-        dd($rem_User['row']);
-        User::destroy($rem_User['del']);
-        return redirect('/user')->with('success','User removed success');
+        $userId = $validated['user_id'];
+        $user = User::find($userId);
+        $user->delete();
+        return redirect('/user')->with('success', 'User removed successfully');
     }
+
+    public function searchUser(Request $request): View
+    {
+        $validated = $request->validate([
+            'search' => ['required', 'max:255'],
+        ]);
+        $query = $validated['search'];
+        //dd($query);
+        $users = User::where('name', 'LIKE', "%{$query}%");
+        dd($users);
+        return view('backend.people',['users'=>$users]);
+    }
+
   
 }

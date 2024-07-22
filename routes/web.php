@@ -40,6 +40,13 @@ Route::group(['middleware'=> 'auth'], function(){
     Route::post('/setUser', 'UserController@setUser');
     Route::post('/removeUser', 'UserController@removeUser');
     Route::post('/editUser', 'UserController@editUser');
+    Route::post('/search', 'UserController@searchUser');
+    Route::get('/service', 'ServiceController@getService');
+    Route::post('/editService', 'ServiceController@editService');
+    Route::post('/setService', 'ServiceController@setService');
+    Route::get('/menu', 'MenuController@getMenu');
+    Route::post('/editMenu', 'MenuController@editMenu');
+    Route::post('/setMenu', 'MenuController@setMenu');
 });
 
 // Route::get('/about', function () {
