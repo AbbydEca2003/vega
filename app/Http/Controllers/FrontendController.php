@@ -5,19 +5,24 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Model\AboutUs;
 use App\Model\Message;
+use App\Model\Menu;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 
 class FrontendController extends Controller
 {
-    public  $data;
+    public  $aboutData;
+    public $menuData;
     public function __construct() {
-        $this->data = AboutUs::all();
+        $this->aboutData = AboutUs::all();
+        $this->menuData = Menu::all();
     }
 
     public function getData(): View{
-        $data = $this->data;
-        return view('frontend.welcome',['data'=>$data]);
+        $aboutData = $this->aboutData;
+        $menuData = $this->menuData;
+        //dd($aboutData);
+        return view('frontend.welcome',['data'=>$aboutData],['menuData'=>$menuData]);
     }
 
     public function setMessage(Request $request): View{
@@ -33,7 +38,9 @@ class FrontendController extends Controller
         $db->phone = $message['phone'];
         $db->message = $message['message'];
         $db->save();
-        $data = $this->data;
-        return view('frontend.welcome',['data'=>$data]);
+        //dd($db);
+        $aboutData = $this->aboutData;
+        $menuData = $this->menuData;
+        return view('frontend.welcome',['data'=>$aboutData],['menuData'=>$menuData]);
     }
 }

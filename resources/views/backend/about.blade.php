@@ -49,6 +49,10 @@
                             <div class="col-2"><label for="linkedin">Linkedin:</label></div>
                             <div class="col"><input type="text" placeholder="Linkedin" name="linkedin" value="{{$abouts-> linkedin}}" class="form-control"></div>
                         </div>
+                        <div class="row">
+                            <div class="col-2"><label for="logo">Site Logo:</label></div>
+                            <div class="col"><input type="file" placeholder="logo" name="logo" value="" class="form-control"></div>
+                        </div>
                         <input type="submit"  class="btn btn-primary">
                     @endforeach
                        

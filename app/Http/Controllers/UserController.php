@@ -101,7 +101,6 @@ class UserController extends Controller
             'search' => ['required', 'max:255'],
         ]);
         $query = $validated['search'];
-        //dd($query);
         $users = User::where('name', 'LIKE', "%{$query}%");
         dd($users);
         return view('backend.people',['users'=>$users]);

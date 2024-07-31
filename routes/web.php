@@ -16,9 +16,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'FrontendController@getData');
 Route::post('/sendMessage', 'FrontendController@setMessage');
 
-Route::get('/new', function(){
-    return view('frontend.test');
-});
 
 Route::get('/login', function () {
          return view('backend.login');
@@ -32,23 +29,31 @@ Route::group(['middleware'=> 'auth'], function(){
     Route::get('/admin', function () {
         return view('backend.dashboard');
     });   
+
+    Route::get('/pageEditor', function () {
+        return view('backend.pageEditor');
+    }); 
     
     Route::get('/about', 'AboutController@getAbout');
     Route::post('/setAbout', 'AboutController@setAbout');
+
     Route::get('/message', 'MessageController@getMessage');
+
     Route::get('/user', 'UserController@getUser');
     Route::post('/setUser', 'UserController@setUser');
     Route::post('/removeUser', 'UserController@removeUser');
     Route::post('/editUser', 'UserController@editUser');
-    Route::post('/search', 'UserController@searchUser');
-    Route::get('/service', 'ServiceController@getService');
-    Route::post('/editService', 'ServiceController@editService');
-    Route::post('/setService', 'ServiceController@setService');
+
+    Route::get('/page', 'PageController@getPage');
+    // Route::post('/editPage', 'PageController@editPage');
+    Route::get('/editPage', function () {
+        return view('backend.editPage');
+    });
+    Route::post('/setPage', 'PageController@setPage');
+    Route::post('/removePage', 'PageController@removePage');
+
     Route::get('/menu', 'MenuController@getMenu');
     Route::post('/editMenu', 'MenuController@editMenu');
     Route::post('/setMenu', 'MenuController@setMenu');
+    Route::post('removeMenu', 'MenuController@removeMenu');
 });
-
-// Route::get('/about', function () {
-//         return view('backend.about');
-//     }); 

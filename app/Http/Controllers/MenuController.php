@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Model\Menu;
+use Redirect;
+use Illuminate\Http\RedirectResponse;
 
 class MenuController extends Controller
 {
@@ -25,6 +27,7 @@ class MenuController extends Controller
     }
 
     public function editMenu(Request $request){
+        dd('s');
         $data = $request->validate([
             'menu_name' => ['required'],
             'link' => ['required'],
@@ -41,5 +44,17 @@ class MenuController extends Controller
             Menu::destroy($userId);
             return redirect('/menu')->with('success','User removed success');
         }
+    }
+
+    public function removeMenu(Request $request): RedirectResponse
+    {
+        $validated = $request->validate([
+            'menu_id' => ['required'],
+        ]);
+        $menuId = $validated['menu_id'];
+        $menu = Menu::find($menuId);
+        //dd($menu);
+        $menu->delete();
+        return redirect('/menu')->with('success', 'Page removed successfully');
     }
 }

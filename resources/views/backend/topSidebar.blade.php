@@ -99,8 +99,8 @@
                                     </a> </li>
                         </li>
                         <li class="nav-item nav-treeview"> 
-                            <li class="nav-item"> <a href="/service" class="nav-link"> <i class="nav-icon bi bi-pencil-square"></i>
-                                        <p>Service</p>
+                            <li class="nav-item"> <a href="/page" class="nav-link"> <i class="nav-icon bi bi-pencil-square"></i>
+                                        <p>Pages</p>
                                     </a> </li>
                         </li>
                         <li class="nav-item nav-treeview"> 
