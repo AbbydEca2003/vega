@@ -7,10 +7,10 @@
                 </div>
                  <div class="row">
                     <div class="col-lg-4 border rounded p-3 contact">
-                        @foreach($data as $datas)
+                        @foreach($data as $data)
                         <h1>Office</h1><p>{{$datas-> address}}</p>
-                        <p >Phone: {{$datas-> phone}}</p>
-                        <p >Email: {{$datas-> email}}</p>
+                        <p >Phone: {{$data-> phone}}</p>
+                        <p >Email: {{$data-> email}}</p>
                         
                     </div>
                     <div class="col">

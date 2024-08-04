@@ -27,7 +27,6 @@ class MenuController extends Controller
     }
 
     public function editMenu(Request $request){
-        dd('s');
         $data = $request->validate([
             'menu_name' => ['required'],
             'link' => ['required'],

@@ -6,6 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Page extends Model
 {
-    protected $table = 'service';
+    protected $table = 'page';
     protected $primary_key = 'id';
 }

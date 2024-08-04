@@ -22,7 +22,7 @@ crossorigin="anonymous"></script>
     <div class="layout-fixed sidebar-expand-lg bg-body-tertiary">
         @include('backend.topSidebar')
         <main class="app-main p-3">
-        <a href="/editPage"><button class="btn btn-danger">+ Add</button><br><br></a>
+        <a href="/newPage"><button class="btn btn-danger">+ Add</button><br><br></a>
     
 <div class="card">
   <div class="card-header">

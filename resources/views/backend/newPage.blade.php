@@ -29,7 +29,7 @@
     </div>
     <!-- /.card-header -->
     <!-- form start -->
-    <form action="/saveEditPage" method="post">
+    <form action="/createPage" method="post">
       <div class="card-body">
         <div class="form-group">
           @csrf
@@ -48,17 +48,18 @@
           </div>
         </div>
         <div class="form-check">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1" value="">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1">
           <label class="form-check-label" for="exampleCheck1">Don't publish this site</label>
         </div>
         <div>
           <div class="card-body container">
             <textarea id="summernote" name="code">
-            {{$info}}
+            
             </textarea>
           </div>
         </div>
        <footer>
+          <input type="reset" value="Cancil" class="btn btn-danger">
           <input type="submit" value="Save" class="btn btn-primary">
        </footer>
     </form>

@@ -45,9 +45,11 @@ Route::group(['middleware'=> 'auth'], function(){
     Route::post('/editUser', 'UserController@editUser');
 
     Route::get('/page', 'PageController@getPage');
-    // Route::post('/editPage', 'PageController@editPage');
-    Route::get('/editPage', function () {
-        return view('backend.editPage');
+    Route::post('/createPage', 'PageController@createPage');
+    Route::post('/editPage', 'PageController@editPage');
+    Route::post('/saveEditPage', 'PageController@saveEditPage');
+    Route::get('/newPage', function () {
+        return view('backend.newPage');
     });
     Route::post('/setPage', 'PageController@setPage');
     Route::post('/removePage', 'PageController@removePage');
