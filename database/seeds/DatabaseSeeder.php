@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
             AboutSeeder::class,
             AdminSeed::class,
             MessageSeed::class,
-            page::class,
+            PageSeeder::class,
             MenuSeeder::class,
         ]);
     }
