@@ -57,7 +57,9 @@ class PageController extends Controller
     public function editPage(Request $request){
         $validated = $request->validate([
             'page_id' => ['required'],
+            'page_title' => ['required'],
         ]);
+        $title = $validated['page_title'];
         $pageId = $validated['page_id'];
         $pageTitle = Page::find($pageId);
         // Path to the file within the resources/views directory
@@ -71,24 +73,9 @@ class PageController extends Controller
     
         // Read the file content
         $fileContent = File::get($filePath);
-    
-        return view('/backend/editPage',['info'=>$fileContent]);
+        return view('/backend/editPage',compact('title', 'fileContent', 'pageId'));
     }
 
-    public function SaveEditPage(Request $request){
-        
-        $data = $request->validate([
-            'page_id' => ['required'],
-        ]);
-        return redirect('/saveEditPage');
-        if($request->input('submit') === 'Save'){
-            $page = Page::find($data['page_id']);
-            $page->title = $data['title'];
-            $page->message = $data['message'];
-            $page->save();
-            return redirect('/')->with('success','Data update success');
-        }
-    }
 
     public function removePage(Request $request): RedirectResponse
     {
@@ -98,6 +85,10 @@ class PageController extends Controller
         ]);
         $pageId = $validated['page_id'];
         $page = Page::find($pageId);
+        $pageTitle = $page->title;
+        $filePath = resource_path('views/frontend/'.$pageTitle.'.blade.php');
+        File::delete($filePath);
+        //Artisan::call('view:clear');
         $page->delete();
         return redirect('/page')->with('success', 'Page removed successfully');
     }

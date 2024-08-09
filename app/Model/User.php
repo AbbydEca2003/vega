@@ -11,6 +11,7 @@ class User extends Authenticatable
     protected $table = "users";
     protected $primary_key = 'id';
     
+    
     use Notifiable;
 
     /**

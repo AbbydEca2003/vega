@@ -33,7 +33,7 @@
                     <div class="row">
                         <div class="col-8">
                             <div class="form-check"> <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"> <label class="form-check-label" for="flexCheckDefault">
-                                    Remember Me
+                                    <!-- Remember Me -->
                                 </label> </div>
                         </div> <!-- /.col -->
                         <div class="col-4">
@@ -43,7 +43,7 @@
                     </div> <!--end::Row-->
                 </form>
                 
-                <p class="mb-1"> <a href="forgot-password.html">I forgot my password</a> </p>
+                <!-- <p class="mb-1"> <a href="forgot-password.html">I forgot my password</a> </p> -->
             </div> <!-- /.login-card-body -->
         </div>
     </div> <!-- /.login-box --> <!--begin::Third Party Plugin(OverlayScrollbars)-->

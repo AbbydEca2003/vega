@@ -59,7 +59,6 @@
           </div>
         </div>
        <footer>
-          <input type="reset" value="Cancil" class="btn btn-danger">
           <input type="submit" value="Save" class="btn btn-primary">
        </footer>
     </form>

@@ -29,12 +29,12 @@
     </div>
     <!-- /.card-header -->
     <!-- form start -->
-    <form action="/saveEditPage" method="post">
+    <form action="/createPage" method="post">
       <div class="card-body">
         <div class="form-group">
           @csrf
           <label for="exampleInputEmail1">Page name</label>
-          <input type="text" class="form-control" id="" placeholder="Enter page name" name="title">
+          <input type="text" class="form-control" id="" placeholder="Enter page name" name="title" value="{{$title}}">
         </div>
         <div class="form-group">
           <label for="exampleInputPassword1">Page link</label>
@@ -54,7 +54,7 @@
         <div>
           <div class="card-body container">
             <textarea id="summernote" name="code">
-            {{$info}}
+            {{$fileContent}}
             </textarea>
           </div>
         </div>

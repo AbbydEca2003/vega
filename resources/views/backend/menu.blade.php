@@ -71,10 +71,36 @@ crossorigin="anonymous"></script>
                     Publish
                 </td>
                 <td class="project-actions text-right">
-                <button class="btn btn-primary"  data-toggle="modal" data-target="#edit_menu">Edit</button>
+                <button class="btn btn-primary"  data-toggle="modal" data-target="#menu_{{$menus->id}}">Edit</button>
                 <button class="btn btn-danger" data-toggle="modal" data-target="#removePage" onclick="change({{$menus->id}})">Delete</button>
                 </td>
             </tr>
+            <!-- model edit menu -->
+    <div class="modal fade" id="menu_{{$menus->id}}" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addService">Edit menu item</h5>
+            </div>
+            <div class="modal-body">
+            <form action="/editMenu" method="post">
+                    @csrf
+                    <div class="row">
+                    <label for="name">Menu Title: </label>
+                    <input type="text" placeholder="Name" value=" {{$menus->menu_name}}" name="menu_name" class="form-control">
+                    <label for="name">Menu Link: </label>
+                    <input type="text" placeholder="Link" value="{{$menus->link}}" name="menu_link" class="form-control">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <input type="hidden" id="user_id" value="{{$menus->id}}" name="menu_id">
+                    <input type="submit" value="Set" class="btn btn-primary">
+                </form>
+            </div>
+            </div>
+        </div>        
+    </div>
             @endforeach
         </tbody>
     </table>
@@ -109,31 +135,7 @@ crossorigin="anonymous"></script>
             </div>
         </div>        
     </div>
-    <div class="container">
-    <div class="card-body">
-        <form action="">
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Enter title</label>
-                    <input type="text" class="form-control" id="" placeholder="Enter Title">
-                  </div>
-                  <div class="form-group">
-                    <label for="title">Description</label>
-                    <textarea name="" id="" class="form-control" id="" placeholder="Enter Title"></textarea>
-                  <div class="form-group">
-                    <label for="exampleInputFile">File input</label>
-                    <div class="input-group">
-                      <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="exampleInputFile">
-                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                      </div>
-                      <div class="input-group-append">
-                        <span class="input-group-text">Upload</span>
-                      </div>
-                    </div>
-                  </div>
-                  <input type="submit" class="btn btn-primary">
-                  </form>
-    </div>
+   
 
     <!-- Modal delete page-->
     <div class="modal fade" id="removePage" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -179,63 +181,13 @@ crossorigin="anonymous"></script>
             </div>
         </div>        
     </div>
-    <!-- model edit menu -->
-    <div class="modal fade" id="edit_menu" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="addService">Edit menu item</h5>
-            </div>
-            <div class="modal-body">
-            <form action="/editMenu" method="post">
-                    @csrf
-                    <div class="row">
-                    <label for="name">Menu Title: </label>
-                    <input type="text" placeholder="Name" value=" {{$menus->menu_name}}" name="title" class="form-control">
-                    <label for="name">Menu Link: </label>
-                    <input type="text" placeholder="Link" value="" name="link" class="form-control">
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <input type="hidden" id="user_id" name="user_id">
-                    <input type="submit" value="Set" class="btn btn-primary">
-                </form>
-            </div>
-            </div>
-        </div>        
-    </div>
-    <div class="container">
-    <div class="card-body">
-        <form action="">
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Enter title</label>
-                    <input type="text" class="form-control" id="" placeholder="Enter Title">
-                  </div>
-                  <div class="form-group">
-                    <label for="title">Description</label>
-                    <textarea name="" id="" class="form-control" id="" placeholder="Enter Title"></textarea>
-                  <div class="form-group">
-                    <label for="exampleInputFile">File input</label>
-                    <div class="input-group">
-                      <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="exampleInputFile">
-                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                      </div>
-                      <div class="input-group-append">
-                        <span class="input-group-text">Upload</span>
-                      </div>
-                    </div>
-                  </div>
-                  <input type="submit" class="btn btn-primary">
-                  </form>
-    </div>
+    
+    
 
 
  <script src="js/adminlte.js"></script> 
  <script>
         function change(x){
-            alert(x);
         document.getElementById('menu_id').value = x;
         document.getElementById('edit_menu').value = x;
         }

@@ -63,16 +63,17 @@ crossorigin="anonymous"></script>
                     </small>
                 </td>
                 <td class="project-state">
-                    Publish
+                    {{$pages->status}}
                 </td>
                 <td class="project-actions text-right d-flex">
                     <form action="/editPage" method="post">
                         @csrf
                         <input type="hidden" value="{{$pages->id}}" name="page_id">
+                        <input type="hidden" value="{{$pages->title}}" name="page_title">
                         <input type="submit" value="Edit" class="btn btn-secondary">
                     </form>
                     <button class="btn btn-danger" data-toggle="modal" data-target="#removePage" onclick="change({{$pages->id}})">Delete</button>
-                </td>
+                </td>   
             </tr>
             @endforeach
         </tbody>
@@ -87,7 +88,6 @@ crossorigin="anonymous"></script>
     <script src="js/adminlte.js"></script> 
     <script>
         function change(x){
-            alert(x);
         document.getElementById('page_id').value = x;
         document.getElementById('edit_user').value = x;
         }

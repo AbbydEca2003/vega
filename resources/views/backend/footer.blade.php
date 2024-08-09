@@ -1,6 +1,6 @@
 <footer class="app-footer"> <!--begin::To the end-->
             <div class="float-end d-none d-sm-inline">You are a hero</div> <!--end::To the end--> <!--begin::Copyright--> <strong>
-                Copyright &copy; 2029-2024&nbsp;
+                Copyright &copy; 2019-2024&nbsp;
                 <a href="" class="text-decoration-none">Vega Business</a>.
             </strong>
             All rights reserved.

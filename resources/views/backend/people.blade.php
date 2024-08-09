@@ -52,22 +52,15 @@ crossorigin="anonymous"></script>
                     <td>{{$user->id}}</td>
                     <td>{{$user->name}}</td>
                     <td>{{$user->email}}</td>
-                    <td>{{$user->status}}</td>
+                    <td>{{$user->is_active}}</td>
                     <td><div class="row">
                              <div class="col">
-                                <button class=" btn btn-primary" data-toggle="modal" data-target="#editUser" onclick="change({{$user->id}})">Edit</button>
+                                <button class=" btn btn-primary" data-toggle="modal" data-target="#user_{{$user->id}}" onclick="change({{$user->id}})">Edit</button>
                             </div>
                         </div></td>
                   </tr>
-                  @endforeach
-                  </tbody>
-                  <tfoot>
-                  </tfoot>
-                </table>
-
-
-         <!-- Modal Edit user model-->
-         <div class="modal fade" id="editUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                   <!-- Modal Edit user model-->
+         <div class="modal fade" id="user_{{$user->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
             <div class="modal-header">
@@ -77,21 +70,21 @@ crossorigin="anonymous"></script>
             <div class="modal-body">
             <form action="/editUser" method="post">
                     @csrf
-                    <div class="input-group mb-3"> <input type="text" class="form-control" placeholder="Full Name" name="username" value="{{$user->name[1]}}">
+                    <div class="input-group mb-3"> <input type="text" class="form-control" placeholder="Full Name" name="username" value="{{$user->name}}">
                         <div class="input-group-text"> <span class="bi bi-person"></span> </div>
                     </div>
-                    <div class="input-group mb-3"> <input type="email" class="form-control" placeholder="Email" name="email">
+                    <div class="input-group mb-3"> <input type="email" class="form-control" placeholder="Email" name="email" value="{{$user->email}}">
                         <div class="input-group-text"> <span class="bi bi-envelope"></span> </div>
                     </div>
                     <div class="input-group mb-3"> <input type="password" class="form-control" placeholder="Password" name="password">
                         <div class="input-group-text"> <span class="bi bi-lock-fill"></span> </div>
                     </div> <!--begin::Row-->
-                    <div class="input-group mb-3">Active Status<input type="radio" name="status"><input type="radio" name="status">
+                    <div class="input-group mb-3">Active Status<input type="checkbox" name="is_active" id="is_active" data-toggle="toggle" value="1">
                     </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <input type="hidden" id="edit_user"name="user_id">
+                    <input type="hidden" id="edit_user"value="{{$user->id}}" name="user_id">
                     <input type="submit" value="Update" class="btn btn-primary" >
                 </form>
             </div>
@@ -99,9 +92,15 @@ crossorigin="anonymous"></script>
         </div>
         </div>
 
+                  @endforeach
+                  </tbody>
+                  <tfoot>
+                  </tfoot>
+                </table>
+
 
         
-         <!-- Modal -->
+         <!-- New user model -->
          <div class="modal fade" id="addUser" tabindex="-1" role="dialog" >
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -137,7 +136,6 @@ crossorigin="anonymous"></script>
     <script src="js/adminlte.js"></script> 
     <script>
         function change(x){
-            alert(x);
         document.getElementById('user_id').value = x;
         document.getElementById('edit_user').value = x;
         document.getElementById('username').value = x;
