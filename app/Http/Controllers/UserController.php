@@ -70,14 +70,15 @@ class UserController extends Controller
             'username' => ['required'],
             'email' => ['required', 'email'],
             'user_id' => ['required'],
+            'is_active'=> ['required'],
         ]);
         $userId = $validated['user_id'];
         $n = User::find($userId);
         $n->name =  $validated['username'];
         $n->email =  $validated['email'];
+        $n->is_active =  $validated['is_active'];
         //$n->password =  Hash::make($validated['password']);
         $n->email_verified_at =  Carbon::now();
-        //dd($new);
         $n->save();
         return redirect('/user')->with('success','User edit success');
     }

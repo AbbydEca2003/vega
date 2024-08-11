@@ -22,11 +22,19 @@ crossorigin="anonymous"></script>
     <div class="layout-fixed sidebar-expand-lg bg-body-tertiary">
         @include('backend.topSidebar')
         <main class="app-main p-3">
-        <a href="/newPage"><button class="btn btn-danger">+ Add</button><br><br></a>
+        
     
 <div class="card">
   <div class="card-header">
-    <h3 class="card-title">Page</h3>
+    <div class="row">
+        <div class="col">
+            <div class="card-title"><h1>Pages</h1></div>
+        </div>
+        <div class="col d-flex justify-content-end">
+            <a href="/newPage"><button class="btn btn-primary">+ Add</button><br><br></a>
+        </div>
+    </div>
+    
   </div>
   <div class="card-body p-3">
     <table id="example1" class="table table-bordered table-striped">
@@ -82,7 +90,8 @@ crossorigin="anonymous"></script>
   <!-- /.card-body -->
 </div>
                 </main><!--begin::Footer-->
-                @include('backend.footer')          
+                @include('backend.footer')   
+                @include('backend.successMessage')         
     </div>
 
     <script src="js/adminlte.js"></script> 

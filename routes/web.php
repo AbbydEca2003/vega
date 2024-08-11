@@ -47,7 +47,6 @@ Route::group(['middleware'=> 'auth'], function(){
     Route::get('/page', 'PageController@getPage');
     Route::post('/createPage', 'PageController@createPage');
     Route::post('/editPage', 'PageController@editPage');
-    Route::post('/saveEditPage', 'PageController@saveEditPage');
     Route::get('/newPage', function () {
         return view('backend.newPage');
     });

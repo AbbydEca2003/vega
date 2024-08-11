@@ -18,25 +18,25 @@
                             @csrf
                             <div class="row align-items-stretch mb-5">
                                 <div class="col-md-6">
-                                    <div class="form-group">
+                                    <div class="form-group p-1">
                                         <!-- Name input-->
                                         <input class="form-control" name="name" id="name" type="text" placeholder="Your Name *" data-sb-validations="required">
                                         <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group p-1">
                                         <!-- Email address input-->
                                         <input class="form-control" name="email" id="email" type="email" placeholder="Your Email *" data-sb-validations="required,email">
                                         <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
                                         <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
                                     </div>
-                                    <div class="form-group mb-md-0">
+                                    <div class="form-group mb-md-0 p-1">
                                         <!-- Phone number input-->
                                         <input class="form-control" name="phone" id="phone" type="tel" placeholder="Your Phone *" data-sb-validations="required">
                                         <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="form-group form-group-textarea mb-md-0">
+                                    <div class="form-group form-group-textarea mb-md-0 p-1">
                                         <!-- Message input-->
                                         <textarea class="form-control" id="message" placeholder="Your Message *" data-sb-validations="required" name="message"></textarea>
                                         <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>

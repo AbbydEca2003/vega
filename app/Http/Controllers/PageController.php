@@ -40,21 +40,25 @@ class PageController extends Controller
         // Get the content from the textarea
         $title = $request->input('title');
         $content = $request->input('code');
-
-        $pageDetail = new Page;
-        $pageDetail->title = $message['title'];
-        $pageDetail->status = 'active';
-        $pageDetail->save();
-        //dd($message);
+        
+       
         // Define the file path
         $filePath = resource_path('views/frontend/'.$title.'.blade.php');
-       
+        
+        if (!File::exists($filePath)) {
+            $pageDetail = new Page;
+            $pageDetail->title = $message['title'];
+            $pageDetail->status = 'active';
+            $pageDetail->save();
+        }
         // Write the content to the file
         File::put($filePath, $content);
-        return view('/backend.pages',['page' => $page]);
+        return redirect('/page')->with(['page' => $page])->with('success','Page edit success');
+        //return view('/backend.pages',['page' => $page]);
     }         
 
     public function editPage(Request $request){
+        $page = $this->page;
         $validated = $request->validate([
             'page_id' => ['required'],
             'page_title' => ['required'],
@@ -73,7 +77,7 @@ class PageController extends Controller
     
         // Read the file content
         $fileContent = File::get($filePath);
-        return view('/backend/editPage',compact('title', 'fileContent', 'pageId'));
+        return view('/backend/editPage',compact('title', 'fileContent', 'pageId','page'));
     }
 
 

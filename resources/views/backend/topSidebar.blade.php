@@ -19,10 +19,10 @@
                 <nav class="mt-2"> <!--begin::Sidebar Menu-->
                     <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview" role="menu" data-accordion="false">
                         <li class="nav-item nav-treeview"> 
-                            <!-- <li class="nav-item"> <a href="/admin" class="nav-link"> <i class="nav-icon bi bi-speedometer"></i>
+                            <li class="nav-item"> <a href="/admin" class="nav-link"> <i class="nav-icon bi bi-speedometer"></i>
                                         <p>Home</p>
                                     </a> </li>
-                        </li> -->
+                        </li>
                         <li class="nav-item nav-treeview"> 
                             <li class="nav-item"> <a href="/about" class="nav-link"> <i class="nav-icon bi bi-tree-fill"></i>
                                         <p>About US</p>

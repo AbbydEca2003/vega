@@ -22,17 +22,23 @@ crossorigin="anonymous"></script>
     <div class="layout-fixed sidebar-expand-lg bg-body-tertiary">
          @include('backend.topSidebar')
             <main class="app-main p-3">
-               <button class="btn btn-danger" data-toggle="modal" data-target="#addMenu">+ Add</button>
-               
-                <h2 class="text-success">{!! \Session::get('success') !!}</h2>
+              
           <!-- Default box -->
-<div class="card">
+<div class="card container">
   <div class="card-header">
-    <h3 class="card-title">Menus</h3>
+    <div class="row">
+        <div class="col">
+            <div class="card-title"><h1><Menu>  </Menu></h1></div>
+        </div>
+        <div class="col d-flex justify-content-end">
+            <button class="btn btn-primary" data-toggle="modal" data-target="#addMenu">+ Add</button>
+                </div>
+        </div>
+    
 
   </div>
   <div class="card-body p-0">
-    <table class="table table-striped projects">
+    <table class="table table-bordered table-striped">
         <thead>
             <tr>
                 <th style="width: 3%">
@@ -49,8 +55,6 @@ crossorigin="anonymous"></script>
                 </th>
                 <th style="width: 20%" class="text-center">
                     Edit
-                </th>
-                <th>
                 </th>
             </tr>
         </thead>
@@ -71,7 +75,7 @@ crossorigin="anonymous"></script>
                     Publish
                 </td>
                 <td class="project-actions text-right">
-                <button class="btn btn-primary"  data-toggle="modal" data-target="#menu_{{$menus->id}}">Edit</button>
+                <button class="btn btn-secondary"  data-toggle="modal" data-target="#menu_{{$menus->id}}">Edit</button>
                 <button class="btn btn-danger" data-toggle="modal" data-target="#removePage" onclick="change({{$menus->id}})">Delete</button>
                 </td>
             </tr>
@@ -193,6 +197,6 @@ crossorigin="anonymous"></script>
         }
     </script>
         @include('backend.footer')  
-
+        @include('backend.successMessage')  
     </body>
 </html>

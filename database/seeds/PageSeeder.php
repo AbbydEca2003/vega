@@ -12,14 +12,14 @@ class PageSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('page')->insert([
-            'id' => 1,
-            'created_at' => Carbon::now(), 
-            'updated_at' => Carbon::now(), 
-            'title' => 'Title',
-            'status' => "active",
+        // DB::table('page')->insert([
+        //     'id' => 1,
+        //     'created_at' => Carbon::now(), 
+        //     'updated_at' => Carbon::now(), 
+        //     'title' => 'Title',
+        //     'status' => "active",
 
-        ]);
+        // ]);
     }
 }
 
