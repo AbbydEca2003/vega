@@ -62,7 +62,7 @@ class UserController extends Controller
         $new->password =  Hash::make($newUser['password']);
         $new->email_verified_at =  Carbon::now();
         $new->save();
-        return redirect('/user')->with('success','User registered success');
+        return redirect('/user')->with('success','New user has been registered successfully');
     }
 
     public function editUser (Request $request): RedirectResponse{
@@ -70,16 +70,18 @@ class UserController extends Controller
             'username' => ['required'],
             'email' => ['required', 'email'],
             'user_id' => ['required'],
+            'is_active' => 'nullable|boolean',
         ]);
         $userId = $validated['user_id'];
         $n = User::find($userId);
         $n->name =  $validated['username'];
         $n->email =  $validated['email'];
+
+        $n->is_active = $request->has('is_active') ? 1 : 0;
         //$n->password =  Hash::make($validated['password']);
         $n->email_verified_at =  Carbon::now();
-        //dd($new);
         $n->save();
-        return redirect('/user')->with('success','User edit success');
+        return redirect('/user')->with('success','User has been edited successfully');
     }
 
     public function removeUser(Request $request): RedirectResponse
@@ -91,7 +93,7 @@ class UserController extends Controller
         $userId = $validated['user_id'];
         $user = User::find($userId);
         $user->delete();
-        return redirect('/user')->with('success', 'User removed successfully');
+        return redirect('/user')->with('success', 'User has been removed successfully');
     }
 
     public function searchUser(Request $request): View

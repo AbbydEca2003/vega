@@ -22,17 +22,22 @@ crossorigin="anonymous"></script>
     <div class="layout-fixed sidebar-expand-lg bg-body-tertiary">
          @include('backend.topSidebar')
             <main class="app-main p-3">
-               <button class="btn btn-danger" data-toggle="modal" data-target="#addMenu">+ Add</button>
-               
-                <h2 class="text-success">{!! \Session::get('success') !!}</h2>
+              
           <!-- Default box -->
-<div class="card">
+<div class="card container">
   <div class="card-header">
-    <h3 class="card-title">Menus</h3>
+    <div class="row">
+        <div class="col">
+            <div class="card-title"><h1>Menu</h1></div>
+        <div class="col d-flex justify-content-end">
+            <button class="btn btn-primary" data-toggle="modal" data-target="#addMenu">+ Add</button>
+                </div>
+        </div>
+    
 
   </div>
   <div class="card-body p-0">
-    <table class="table table-striped projects">
+    <table class="table table-bordered table-striped">
         <thead>
             <tr>
                 <th style="width: 3%">
@@ -41,16 +46,17 @@ crossorigin="anonymous"></script>
                 <th style="width: 20%">
                     Menu Name
                 </th>
-                <th style="width: 30%">
+                <th style="width: 20%">
                     Created Date
+                </th>
+                <th style="width: 20%">
+                    Updated Date
                 </th>
                 <th>
                     Status
                 </th>
                 <th style="width: 20%" class="text-center">
                     Edit
-                </th>
-                <th>
                 </th>
             </tr>
         </thead>
@@ -63,15 +69,20 @@ crossorigin="anonymous"></script>
                 {{$menus->menu_name}}
                 </td>
                 <td>
-                <small>
+                    <small>
                     {{$menus->created_at}}
                     </small>
                 </td>
+                <td>
+                    <small>
+                    {{$menus->updated_at}}
+                    </small>
+                </td>
                 <td class="project-state">
-                    Publish
+                {{$menus->is_active}}
                 </td>
                 <td class="project-actions text-right">
-                <button class="btn btn-primary"  data-toggle="modal" data-target="#menu_{{$menus->id}}">Edit</button>
+                <button class="btn btn-secondary"  data-toggle="modal" data-target="#menu_{{$menus->id}}">Edit</button>
                 <button class="btn btn-danger" data-toggle="modal" data-target="#removePage" onclick="change({{$menus->id}})">Delete</button>
                 </td>
             </tr>
@@ -90,6 +101,10 @@ crossorigin="anonymous"></script>
                     <input type="text" placeholder="Name" value=" {{$menus->menu_name}}" name="menu_name" class="form-control">
                     <label for="name">Menu Link: </label>
                     <input type="text" placeholder="Link" value="{{$menus->link}}" name="menu_link" class="form-control">
+                    <div class="form-check form-switch m-1">
+                        <label for="active">Active Status..</label>
+                        <input class="form-check-input" type="checkbox" id="is_active" name="is_active" value="1" checked>
+                    </div>
                 </div>
             </div>
             <div class="modal-footer">
@@ -101,7 +116,7 @@ crossorigin="anonymous"></script>
             </div>
         </div>        
     </div>
-            @endforeach
+            
         </tbody>
     </table>
   </div>
@@ -126,6 +141,10 @@ crossorigin="anonymous"></script>
                     <input type="text" placeholder="Link" value="" name="link" class="form-control">
                 </div>
             </div>
+            <div class="form-check form-switch m-1">
+                        <label for="active">Active Status..</label>
+                        <input class="form-check-input" type="checkbox" id="is_active" name="is_active" value="1" checked>
+                    </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <input type="hidden" id="user_id" name="user_id">
@@ -136,7 +155,7 @@ crossorigin="anonymous"></script>
         </div>        
     </div>
    
-
+    @endforeach
     <!-- Modal delete page-->
     <div class="modal fade" id="removePage" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -193,6 +212,6 @@ crossorigin="anonymous"></script>
         }
     </script>
         @include('backend.footer')  
-
+        @include('backend.successMessage')  
     </body>
 </html>

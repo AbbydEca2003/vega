@@ -18,10 +18,12 @@ class MenuController extends Controller
         $data = $request->validate([
             'title' => ['required'],
             'link' => ['required'],
+            'is_active' => 'nullable|boolean',
         ]);
         $menu = new Menu();
         $menu->menu_name = $data['title'];
         $menu->link = $data['link'];
+        $menu->is_active = $request->has('is_active') ? 1 : 0;
         $menu->save();
         return redirect('/menu')->with('success','Data update success');
     }
@@ -31,11 +33,13 @@ class MenuController extends Controller
             'menu_name' => ['required'],
             'menu_link' => ['required'],
             'menu_id' => ['required'],
+            'is_active' => 'nullable|boolean',
         ]); 
         $menuId = $data['menu_id'];
             $menu = Menu::find($menuId);
             $menu->menu_name = $data['menu_name'];
             $menu->link = $data['menu_link'];
+            $menu->is_active = $request->has('is_active') ? 1 : 0;
             $menu->save();
             return redirect('/menu')->with('success','Data update success');
     }

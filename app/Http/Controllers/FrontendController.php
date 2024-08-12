@@ -31,6 +31,7 @@ class FrontendController extends Controller
     }
 
     public function setMessage(Request $request): View{
+        $page=Page::all();
         $message = $request->validate([
             'name' => ['required'],
             'email' => ['required', 'email'],
@@ -46,6 +47,6 @@ class FrontendController extends Controller
         //dd($db);
         $aboutData = $this->aboutData;
         $menuData = $this->menuData;
-        return view('frontend.welcome',['data'=>$aboutData],['menuData'=>$menuData]);
+        return view('frontend.welcome',compact('aboutData','menuData', 'page'));
     }
 }

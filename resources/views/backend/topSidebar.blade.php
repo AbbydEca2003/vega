@@ -7,6 +7,7 @@
                 <ul class="navbar-nav ms-auto"> <!--begin::Navbar Search--> 
                     <li class="nav-item"> <a class="nav-link" href="#" data-lte-toggle="fullscreen"> <i data-lte-icon="maximize" class="bi bi-arrows-fullscreen"></i> <i data-lte-icon="minimize" class="bi bi-fullscreen-exit" style="display: none;"></i> </a> </li> <!--end::Fullscreen Toggle--> <!--begin::User Menu Dropdown-->
                     <li class="nav-item dropdown user-menu"> <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><span class="d-none d-md-inline">{{auth()->user()->name}}</span> </a></li>
+                    <a href="/logout" class="btn btn-secondary text-white">Sign out</a> 
                 </ul> <!--end::End Navbar Links-->
             </div> <!--end::Container-->
         </nav> <!--end::Header--> <!--begin::Sidebar-->
@@ -19,10 +20,10 @@
                 <nav class="mt-2"> <!--begin::Sidebar Menu-->
                     <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview" role="menu" data-accordion="false">
                         <li class="nav-item nav-treeview"> 
-                            <!-- <li class="nav-item"> <a href="/admin" class="nav-link"> <i class="nav-icon bi bi-speedometer"></i>
+                            <li class="nav-item"> <a href="/admin" class="nav-link"> <i class="nav-icon bi bi-speedometer"></i>
                                         <p>Home</p>
                                     </a> </li>
-                        </li> -->
+                        </li>
                         <li class="nav-item nav-treeview"> 
                             <li class="nav-item"> <a href="/about" class="nav-link"> <i class="nav-icon bi bi-tree-fill"></i>
                                         <p>About US</p>
@@ -35,7 +36,7 @@
                         </li>
                         <li class="nav-item nav-treeview"> 
                             <li class="nav-item"> <a href="/user" class="nav-link"> <i class="nav-icon bi bi-box-arrow-in-right"></i>
-                                        <p>People</p>
+                                        <p>Users</p>
                                     </a> </li>
                         </li>
                         <li class="nav-item nav-treeview"> 
@@ -48,7 +49,7 @@
                                         <p>Menu</p>
                                     </a> </li>
                         </li>
-                        <li class="user-footer"><a href="/logout" class="btn">Sign out</a> </li> <!--end::Menu Footer-->
+                        <li class="user-footer"><a href="/logout" class="btn btn-secondary text-white">Sign out</a> </li> <!--end::Menu Footer-->
                     </ul> <!--end::Sidebar Menu-->
                 </nav>
             </div> <!--end::Sidebar Wrapper-->

@@ -39,7 +39,8 @@ class AboutController extends Controller
         $about->linkedin = $data['linkedin'];
 
         $about->save();
-        return redirect('/about')->with('success','Data update success');
+        $request->session()->flash('success', 'Task completed successfully!');
+        return redirect('/about')->with('success','Data has been updated successfully');
         
     }
 }

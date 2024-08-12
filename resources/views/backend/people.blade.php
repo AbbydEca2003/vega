@@ -22,18 +22,22 @@ crossorigin="anonymous"></script>
         
                @include('backend.topSidebar')
                <main class="app-main p-3">
-                <button class=" btn btn-primary" data-toggle="modal" data-target="#addUser">+ Add User</button>
-                <br><br>
+                
 
                                      <!-- new table  -->
        <section class="content">
       <div class="container-fluid">
-        <h2>{!! \Session::get('success') !!}</h2>
         <div class="row">
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Users</h3>
+                <div class="col">
+                <div class="card-title"><h1>Users</h1></div>
+                </div>
+                <div class="col d-flex justify-content-end">
+                    <button class=" btn btn-primary" data-toggle="modal" data-target="#addUser">+ Add User</button>
+                </div>
+                
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -55,7 +59,7 @@ crossorigin="anonymous"></script>
                     <td>{{$user->is_active}}</td>
                     <td><div class="row">
                              <div class="col">
-                                <button class=" btn btn-primary" data-toggle="modal" data-target="#user_{{$user->id}}" onclick="change({{$user->id}})">Edit</button>
+                                <button class=" btn btn-secondary" data-toggle="modal" data-target="#user_{{$user->id}}" onclick="change({{$user->id}})">Edit</button>
                             </div>
                         </div></td>
                   </tr>
@@ -79,7 +83,13 @@ crossorigin="anonymous"></script>
                     <div class="input-group mb-3"> <input type="password" class="form-control" placeholder="Password" name="password">
                         <div class="input-group-text"> <span class="bi bi-lock-fill"></span> </div>
                     </div> <!--begin::Row-->
-                    <div class="input-group mb-3">Active Status<input type="checkbox" name="is_active" id="is_active" data-toggle="toggle" value="1">
+                    <div class="input-group mb-3">Active Status..
+                        <!-- <input type="radio" name="is_active" id="is_active" data-toggle="toggle" value="0">
+                        <input type="radio" name="is_active" id="is_active" data-toggle="toggle" value="1" default> -->
+                            
+                        <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="is_active" name="is_active" value="1" checked>
+                        </div>
                     </div>
             </div>
             <div class="modal-footer">
@@ -113,7 +123,7 @@ crossorigin="anonymous"></script>
                     <div class="input-group mb-3"> <input type="text" class="form-control" placeholder="Full Name" name="username">
                         <div class="input-group-text" > <span class="bi bi-person"></span> </div>
                     </div>
-                    <div class="input-group mb-3"> <input type="email" class="form-control" placeholder="Email" name="email">
+                    <div class="input-group mb-3"> <input type="email" class="form-control" placeholder="Email" name="email" value=" ">
                         <div class="input-group-text"> <span class="bi bi-envelope"></span> </div>
                     </div>
                     <div class="input-group mb-3"> <input type="password" class="form-control" placeholder="Password" name="password">
@@ -171,6 +181,8 @@ crossorigin="anonymous"></script>
       "responsive": true,
     });
   });
+</script>
+@include('backend.successMessage')  
 </script>
 
 </body>

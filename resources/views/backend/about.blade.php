@@ -10,13 +10,24 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/apexcharts@3.37.1/dist/apexcharts.css" integrity="sha256-4MX+61mt9NVvvuPjUWdUdyfZfxSB1/Rf9WtqRHgG5S0=" crossorigin="anonymous"><!-- jsvectormap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jsvectormap@1.5.3/dist/css/jsvectormap.min.css" integrity="sha256-+uGLJmmTKOqBr+2E6KDYs/NRsHxSkONXFHUL0fy2O/4=" crossorigin="anonymous">
     <title>Vega | About</title>
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+
+<!-- Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 </head>
 <body>
     <div class="layout-fixed sidebar-expand-lg bg-body-tertiary">
                @include('backend.topSidebar')
                <main class="app-main p-3 ">
-                    <h2 class="text-success">{!! \Session::get('success') !!}</h2>
-                    <form action="/setAbout" method="post">
+                    
+                    <div class="card container">
+                                <div class="card-header ">
+                                    <div class="card-title"></div>
+                                    <h1>About Company</h1><hr>
+                    <form action="/setAbout" method="post" id="aboutForm">
                         @csrf
                     @foreach($about as $abouts)
                    
@@ -52,17 +63,24 @@
                         <div class="row">
                             <div class="col-2"><label for="logo">Site Logo:</label></div>
                             <div class="col"><input type="file" placeholder="logo" name="logo" value="" class="form-control"></div>
+                        </div><br>
+                        <div class="col d-flex justify-content-end">
+                        <input type="reset"  class="btn btn-secondary m-1" value="Reset Default">
+                        <input type="submit"  class="btn btn-primary m-1" value="Save As">
                         </div>
-                        <input type="submit"  class="btn btn-primary">
                     @endforeach
                        
                     </form>
-                    <h4 class="text-danger">{{$errors->first()}}</h4>
+                    
+                    </div>
+                </div>
 
 
                 </main><!--begin::Footer-->
                 @include('backend.footer')          
     </div>
-    <script src="js/adminlte.js"></script> 
+</div>
+@include('backend.successMessage')  
+
 </body>
 </html>

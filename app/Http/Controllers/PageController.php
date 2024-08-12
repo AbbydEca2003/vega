@@ -21,43 +21,53 @@ class PageController extends Controller
         return view('backend.pages',['page' => $page]);
     }
 
-    public function setPage(Request $request){
-        $data = $request->validate([
-            'title' => ['required'],
-        ]);
-        $page = new Page;
-        $page->title = $data['title'];
-        $page->save();
-        return redirect('/page')->with('success','Data update success');
-    }
+    // public function setPage(Request $request){
+    //     $data = $request->validate([
+    //         'title' => ['required'],
+    //     ]);
+    //     $page = new Page;
+    //     $page->title = $data['title'];
+    //     $page->save();
+    //     return redirect('/page')->with('success','Data update success');
+    // }
 
-    public function createPage(Request $request){
+    public function createPage(Request $request): RedirectResponse{
         $page = $this->page;
+        
         $message = $request->validate([
             'title' => ['required'],
             'code' => ['required'],
+            'is_active' => 'nullable|boolean',
         ]);
+       //dd($page);
         // Get the content from the textarea
         $title = $request->input('title');
         $content = $request->input('code');
-
-        $pageDetail = new Page;
-        $pageDetail->title = $message['title'];
-        $pageDetail->status = 'active';
-        $pageDetail->save();
-        //dd($message);
+        
+       
         // Define the file path
         $filePath = resource_path('views/frontend/'.$title.'.blade.php');
-       
+        
+        if (!File::exists($filePath)) {
+            $pageDetail = new Page;
+            $pageDetail->title = $message['title'];
+
+            $pageDetail->status = $request->has('is_active') ? 1 : 0;
+            $pageDetail->save();
+            
+        }
         // Write the content to the file
         File::put($filePath, $content);
-        return view('/backend.pages',['page' => $page]);
+        return redirect('/page')->with(['page' => $page])->with('success','Page edit success');
+        //return view('/backend.pages',['page' => $page]);
     }         
 
     public function editPage(Request $request){
+        $page = $this->page;
         $validated = $request->validate([
             'page_id' => ['required'],
             'page_title' => ['required'],
+            'is_active' => 'nullable|boolean',
         ]);
         $title = $validated['page_title'];
         $pageId = $validated['page_id'];
@@ -67,13 +77,12 @@ class PageController extends Controller
             
         // Check if the file exists
         if (!File::exists($filePath)) {
-            dd('error');
             abort(404, 'File not found.');
         }
     
         // Read the file content
         $fileContent = File::get($filePath);
-        return view('/backend/editPage',compact('title', 'fileContent', 'pageId'));
+        return view('/backend/editPage',compact('title', 'fileContent', 'pageId','page'));
     }
 
 
