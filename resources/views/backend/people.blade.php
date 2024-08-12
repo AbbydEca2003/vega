@@ -83,7 +83,12 @@ crossorigin="anonymous"></script>
                     <div class="input-group mb-3"> <input type="password" class="form-control" placeholder="Password" name="password">
                         <div class="input-group-text"> <span class="bi bi-lock-fill"></span> </div>
                     </div> <!--begin::Row-->
-                    <div class="input-group mb-3">Active Status<input type="radio" name="is_active" id="is_active" data-toggle="toggle" value="0"><input type="radio" name="is_active" id="is_active" data-toggle="toggle" value="1" default>
+                    <div class="input-group mb-3">Active Status..
+                        <!-- <input type="radio" name="is_active" id="is_active" data-toggle="toggle" value="0">
+                        <input type="radio" name="is_active" id="is_active" data-toggle="toggle" value="1" default> -->
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="is_active" name="is_active" value="1" checked>
+                        </div>
                     </div>
             </div>
             <div class="modal-footer">
@@ -117,7 +122,7 @@ crossorigin="anonymous"></script>
                     <div class="input-group mb-3"> <input type="text" class="form-control" placeholder="Full Name" name="username">
                         <div class="input-group-text" > <span class="bi bi-person"></span> </div>
                     </div>
-                    <div class="input-group mb-3"> <input type="email" class="form-control" placeholder="Email" name="email">
+                    <div class="input-group mb-3"> <input type="email" class="form-control" placeholder="Email" name="email" value=" ">
                         <div class="input-group-text"> <span class="bi bi-envelope"></span> </div>
                     </div>
                     <div class="input-group mb-3"> <input type="password" class="form-control" placeholder="Password" name="password">

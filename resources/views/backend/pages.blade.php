@@ -49,6 +49,9 @@ crossorigin="anonymous"></script>
                 <th style="width: 30%">
                     Created Date
                 </th>
+                <th style="width: 30%">
+                    Updated Date
+                </th>
                 <th>
                     Status
                 </th>
@@ -68,6 +71,11 @@ crossorigin="anonymous"></script>
                 <td>
                 <small>
                     {{$pages->created_at}}
+                    </small>
+                </td>
+                <td>
+                <small>
+                    {{$pages->updated_at}}
                     </small>
                 </td>
                 <td class="project-state">

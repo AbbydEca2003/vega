@@ -3,8 +3,8 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
             <div class="modal-body">
-            <h4 class="text-success">{!! \Session::get('success') !!}</h4>
-            <h4 class="text-danger">{{$errors->first()}}</h4>
+            <h4>{!! \Session::get('success') !!}</h4>
+            <h4>{{$errors->first()}}</h4>
             </div>
             <div class="modal-footer">
             <button class="btn btn-danger" data-dismiss="modal">Close</button>

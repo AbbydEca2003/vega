@@ -46,7 +46,7 @@ crossorigin="anonymous"></script>
         <div class="form-group">
           @csrf
           <label for="pageName">Page name</label>
-          <input type="text" class="form-control" id="" placeholder="Enter page name" name="title" value="{{$title}}">
+          <input type="text" class="form-control" id="" placeholder="Enter page name" name="title" value="{{$title}}" disabled>
         </div>
         <div class="form-group">
           <label for="pageLink">Page link</label>
@@ -70,8 +70,8 @@ crossorigin="anonymous"></script>
             </textarea>
           </div>
         </div>
-       <footer>
-          <input type="submit" value="Save" class="btn btn-primary">
+       <footer class="d-flex justify-content-end">
+          <input type="submit" value="Save" class="btn btn-primary m-1">
        </footer>
     </form>
   </div>

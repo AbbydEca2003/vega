@@ -28,8 +28,7 @@ crossorigin="anonymous"></script>
   <div class="card-header">
     <div class="row">
         <div class="col">
-            <div class="card-title"><h1><Menu>  </Menu></h1></div>
-        </div>
+            <div class="card-title"><h1>Menu</h1></div>
         <div class="col d-flex justify-content-end">
             <button class="btn btn-primary" data-toggle="modal" data-target="#addMenu">+ Add</button>
                 </div>
@@ -50,6 +49,9 @@ crossorigin="anonymous"></script>
                 <th style="width: 30%">
                     Created Date
                 </th>
+                <th style="width: 30%">
+                    Updated Date
+                </th>
                 <th>
                     Status
                 </th>
@@ -67,8 +69,13 @@ crossorigin="anonymous"></script>
                 {{$menus->menu_name}}
                 </td>
                 <td>
-                <small>
+                    <small>
                     {{$menus->created_at}}
+                    </small>
+                </td>
+                <td>
+                    <small>
+                    {{$menus->updated_at}}
                     </small>
                 </td>
                 <td class="project-state">

@@ -36,6 +36,7 @@ class PageController extends Controller
         $message = $request->validate([
             'title' => ['required'],
             'code' => ['required'],
+            'is_active' => 'nullable|boolean',
         ]);
         // Get the content from the textarea
         $title = $request->input('title');
@@ -50,6 +51,7 @@ class PageController extends Controller
             $pageDetail->title = $message['title'];
             $pageDetail->status = 'active';
             $pageDetail->save();
+            $n->is_active = $request->has('is_active') ? 1 : 0;
         }
         // Write the content to the file
         File::put($filePath, $content);
@@ -62,6 +64,7 @@ class PageController extends Controller
         $validated = $request->validate([
             'page_id' => ['required'],
             'page_title' => ['required'],
+            'is_active' => 'nullable|boolean',
         ]);
         $title = $validated['page_title'];
         $pageId = $validated['page_id'];

@@ -35,7 +35,7 @@
                         </li>
                         <li class="nav-item nav-treeview"> 
                             <li class="nav-item"> <a href="/user" class="nav-link"> <i class="nav-icon bi bi-box-arrow-in-right"></i>
-                                        <p>People</p>
+                                        <p>Users</p>
                                     </a> </li>
                         </li>
                         <li class="nav-item nav-treeview"> 

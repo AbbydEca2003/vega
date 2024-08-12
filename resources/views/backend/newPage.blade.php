@@ -60,7 +60,7 @@ crossorigin="anonymous"></script>
           </div>
         </div>
         <div class="form-check">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+          <input type="checkbox" class="form-check-input" id="is_active" name="is_active" value="1">
           <label class="form-check-label" for="exampleCheck1">Don't publish this site</label>
         </div>
         <div>
@@ -70,8 +70,8 @@ crossorigin="anonymous"></script>
             </textarea>
           </div>
         </div>
-       <footer>
-          <input type="submit" value="Save" class="btn btn-primary">
+       <footer class=" d-flex justify-content-end">
+          <input type="submit" value="Save" class="btn btn-primary m-1">
        </footer>
     </form>
   </div>
