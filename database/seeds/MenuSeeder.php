@@ -18,6 +18,7 @@ class MenuSeeder extends Seeder
             'updated_at' => Carbon::now(), 
             'menu_name' => 'Title',
             'link' => "www.google.com",
+            'is_active' => 1,
         ]);
     }
 }

@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
   <!-- CodeMirror -->
   <link rel="stylesheet" href="plugins/codemirror/codemirror.css">
-  <link rel="stylesheet" href="plugins/codemirror/theme/monokai.css">A
+  <link rel="stylesheet" href="plugins/codemirror/theme/monokai.css">
   <!-- SimpleMDE -->
   <link rel="stylesheet" href="plugins/simplemde/simplemde.min.css">
     <meta charset="UTF-8">
@@ -56,12 +56,14 @@ crossorigin="anonymous"></script>
           <label for="exampleInputFile">Page Logo</label>
           <div class="input-group"><br><br>
             <div class="custom-file">
-              <input type="file" class="custom-file-input" id="exampleInputFile">
+              <input type="file" class="custom-file-input" id="">
           </div>
         </div>
         <div class="form-check">
-          <input type="checkbox" class="form-check-input" id="is_active" name="is_active" value="1">
-          <label class="form-check-label" for="exampleCheck1">Don't publish this site</label>
+        <div class="form-check form-switch">
+            <label class="form-check-label" for="">Publish this site</label>
+            <input class="form-check-input" type="checkbox" id="is_active" name="is_active" value="1" checked>
+         </div>
         </div>
         <div>
           <div class="card-body container">

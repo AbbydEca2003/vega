@@ -18,6 +18,7 @@ class CreateMenuTable extends Migration
             $table->timestamps();
             $table->string('menu_name');
             $table->string('link');
+            $table->string('is_active');
         });
     }
 

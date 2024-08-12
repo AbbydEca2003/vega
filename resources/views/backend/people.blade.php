@@ -86,8 +86,9 @@ crossorigin="anonymous"></script>
                     <div class="input-group mb-3">Active Status..
                         <!-- <input type="radio" name="is_active" id="is_active" data-toggle="toggle" value="0">
                         <input type="radio" name="is_active" id="is_active" data-toggle="toggle" value="1" default> -->
+                            
                         <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" id="is_active" name="is_active" value="1" checked>
+                                <input class="form-check-input" type="checkbox" id="is_active" name="is_active" value="1" checked>
                         </div>
                     </div>
             </div>

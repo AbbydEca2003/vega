@@ -24,7 +24,8 @@
                <main class="app-main p-3 ">
                     
                     <div class="card container">
-                                <div class="card-header">
+                                <div class="card-header ">
+                                    <div class="card-title"></div>
                                     <h1>About Company</h1><hr>
                     <form action="/setAbout" method="post" id="aboutForm">
                         @csrf

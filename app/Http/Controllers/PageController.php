@@ -21,23 +21,25 @@ class PageController extends Controller
         return view('backend.pages',['page' => $page]);
     }
 
-    public function setPage(Request $request){
-        $data = $request->validate([
-            'title' => ['required'],
-        ]);
-        $page = new Page;
-        $page->title = $data['title'];
-        $page->save();
-        return redirect('/page')->with('success','Data update success');
-    }
+    // public function setPage(Request $request){
+    //     $data = $request->validate([
+    //         'title' => ['required'],
+    //     ]);
+    //     $page = new Page;
+    //     $page->title = $data['title'];
+    //     $page->save();
+    //     return redirect('/page')->with('success','Data update success');
+    // }
 
-    public function createPage(Request $request){
+    public function createPage(Request $request): RedirectResponse{
         $page = $this->page;
+        
         $message = $request->validate([
             'title' => ['required'],
             'code' => ['required'],
             'is_active' => 'nullable|boolean',
         ]);
+       //dd($page);
         // Get the content from the textarea
         $title = $request->input('title');
         $content = $request->input('code');
@@ -49,9 +51,10 @@ class PageController extends Controller
         if (!File::exists($filePath)) {
             $pageDetail = new Page;
             $pageDetail->title = $message['title'];
-            $pageDetail->status = 'active';
+
+            $pageDetail->status = $request->has('is_active') ? 1 : 0;
             $pageDetail->save();
-            $n->is_active = $request->has('is_active') ? 1 : 0;
+            
         }
         // Write the content to the file
         File::put($filePath, $content);
@@ -74,7 +77,6 @@ class PageController extends Controller
             
         // Check if the file exists
         if (!File::exists($filePath)) {
-            dd('error');
             abort(404, 'File not found.');
         }
     

@@ -46,10 +46,10 @@ crossorigin="anonymous"></script>
                 <th style="width: 20%">
                     Menu Name
                 </th>
-                <th style="width: 30%">
+                <th style="width: 20%">
                     Created Date
                 </th>
-                <th style="width: 30%">
+                <th style="width: 20%">
                     Updated Date
                 </th>
                 <th>
@@ -79,7 +79,7 @@ crossorigin="anonymous"></script>
                     </small>
                 </td>
                 <td class="project-state">
-                    Publish
+                {{$menus->is_active}}
                 </td>
                 <td class="project-actions text-right">
                 <button class="btn btn-secondary"  data-toggle="modal" data-target="#menu_{{$menus->id}}">Edit</button>
@@ -101,6 +101,10 @@ crossorigin="anonymous"></script>
                     <input type="text" placeholder="Name" value=" {{$menus->menu_name}}" name="menu_name" class="form-control">
                     <label for="name">Menu Link: </label>
                     <input type="text" placeholder="Link" value="{{$menus->link}}" name="menu_link" class="form-control">
+                    <div class="form-check form-switch m-1">
+                        <label for="active">Active Status..</label>
+                        <input class="form-check-input" type="checkbox" id="is_active" name="is_active" value="1" checked>
+                    </div>
                 </div>
             </div>
             <div class="modal-footer">
@@ -112,7 +116,7 @@ crossorigin="anonymous"></script>
             </div>
         </div>        
     </div>
-            @endforeach
+            
         </tbody>
     </table>
   </div>
@@ -137,6 +141,10 @@ crossorigin="anonymous"></script>
                     <input type="text" placeholder="Link" value="" name="link" class="form-control">
                 </div>
             </div>
+            <div class="form-check form-switch m-1">
+                        <label for="active">Active Status..</label>
+                        <input class="form-check-input" type="checkbox" id="is_active" name="is_active" value="1" checked>
+                    </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <input type="hidden" id="user_id" name="user_id">
@@ -147,7 +155,7 @@ crossorigin="anonymous"></script>
         </div>        
     </div>
    
-
+    @endforeach
     <!-- Modal delete page-->
     <div class="modal fade" id="removePage" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">

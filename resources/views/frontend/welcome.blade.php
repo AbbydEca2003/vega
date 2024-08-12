@@ -30,7 +30,9 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                         @foreach($menuData as $d)
-                        <li class="nav-item"><a class="nav-link" href="{{$d-> link}}">{{$d-> menu_name}}</a></li>
+                        @if($d->is_active === '1') 
+                            <li class="nav-item"><a class="nav-link" href="{{$d-> link}}">{{$d-> menu_name}}</a></li>
+                        @endif
                         @endforeach
                     </ul>
                 </div>
@@ -46,7 +48,7 @@
        
         
         @foreach($page as $page)
-        @if($page->status === 'active')
+        @if($page->status === '1')
             @include('frontend.'.$page->title)
         @endif
         @endforeach

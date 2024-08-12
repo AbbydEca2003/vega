@@ -38,7 +38,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group form-group-textarea mb-md-0 p-1">
                                         <!-- Message input-->
-                                        <textarea class="form-control" id="message" placeholder="Your Message *" data-sb-validations="required" name="message"></textarea>
+                                        <textarea class="form-control" id="message" placeholder="Your Message *" data-sb-validations="required" name="message" rows="5" cols="50"></textarea>
                                         <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
                                     </div>
                                 </div>

@@ -7,6 +7,7 @@
                 <ul class="navbar-nav ms-auto"> <!--begin::Navbar Search--> 
                     <li class="nav-item"> <a class="nav-link" href="#" data-lte-toggle="fullscreen"> <i data-lte-icon="maximize" class="bi bi-arrows-fullscreen"></i> <i data-lte-icon="minimize" class="bi bi-fullscreen-exit" style="display: none;"></i> </a> </li> <!--end::Fullscreen Toggle--> <!--begin::User Menu Dropdown-->
                     <li class="nav-item dropdown user-menu"> <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><span class="d-none d-md-inline">{{auth()->user()->name}}</span> </a></li>
+                    <a href="/logout" class="btn btn-secondary text-white">Sign out</a> 
                 </ul> <!--end::End Navbar Links-->
             </div> <!--end::Container-->
         </nav> <!--end::Header--> <!--begin::Sidebar-->
@@ -48,7 +49,7 @@
                                         <p>Menu</p>
                                     </a> </li>
                         </li>
-                        <li class="user-footer"><a href="/logout" class="btn">Sign out</a> </li> <!--end::Menu Footer-->
+                        <li class="user-footer"><a href="/logout" class="btn btn-secondary text-white">Sign out</a> </li> <!--end::Menu Footer-->
                     </ul> <!--end::Sidebar Menu-->
                 </nav>
             </div> <!--end::Sidebar Wrapper-->
