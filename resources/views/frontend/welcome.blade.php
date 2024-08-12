@@ -45,7 +45,7 @@
                 <a class="btn btn-primary btn-xl text-uppercase" href="#about_us">Tell Me More</a>
             </div>
         </header>
-       Hello from arnav
+       Hello from arnav everyone
         
         @foreach($page as $page)
         @if($page->status === '1')
