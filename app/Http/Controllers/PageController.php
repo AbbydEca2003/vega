@@ -68,9 +68,11 @@ class PageController extends Controller
             'page_id' => ['required'],
             'page_title' => ['required'],
             'is_active' => 'nullable|boolean',
+            'page_status' => ['required'],
         ]);
         $title = $validated['page_title'];
         $pageId = $validated['page_id'];
+        $status = $validated['page_status'];
         $pageTitle = Page::find($pageId);
         // Path to the file within the resources/views directory
         $filePath = resource_path('views/frontend/'.$pageTitle->title.'.blade.php');
@@ -82,7 +84,7 @@ class PageController extends Controller
     
         // Read the file content
         $fileContent = File::get($filePath);
-        return view('/backend/editPage',compact('title', 'fileContent', 'pageId','page'));
+        return view('/backend/editPage',compact('title', 'fileContent', 'pageId','page','status'));
     }
 
 

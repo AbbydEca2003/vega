@@ -3,20 +3,8 @@
 <head>
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/source-sans-3@5.0.12/index.css" integrity="sha256-tXJfXfp6Ewt1ilPzLDtQnJV4hclT9XuaZUKyUvmyr+Q=" crossorigin="anonymous"><!--end::Fonts--><!--begin::Third Party Plugin(OverlayScrollbars)-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.3.0/styles/overlayscrollbars.min.css" integrity="sha256-dSokZseQNT08wYEWiz5iLI8QPlKxG+TswNRD8k35cpg=" crossorigin="anonymous"><!--end::Third Party Plugin(OverlayScrollbars)--><!--begin::Third Party Plugin(Bootstrap Icons)-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.min.css" integrity="sha256-Qsx5lrStHZyR9REqhUF8iQt73X06c8LGIUPzpOhwRrI=" crossorigin="anonymous"><!--end::Third Party Plugin(Bootstrap Icons)--><!--begin::Required Plugin(AdminLTE)-->
-    <link rel="stylesheet" href="/css/adminlte.css"><!--end::Required Plugin(AdminLTE)--><!-- apexcharts -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/apexcharts@3.37.1/dist/apexcharts.css" integrity="sha256-4MX+61mt9NVvvuPjUWdUdyfZfxSB1/Rf9WtqRHgG5S0=" crossorigin="anonymous"><!-- jsvectormap -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jsvectormap@1.5.3/dist/css/jsvectormap.min.css" integrity="sha256-+uGLJmmTKOqBr+2E6KDYs/NRsHxSkONXFHUL0fy2O/4=" crossorigin="anonymous">
-    
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-integrity="sha384q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-crossorigin="anonymous"></script> 
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" 
-integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
-crossorigin="anonymous"></script> 
-    <title>Vega | People</title>
+    <title>Vega | Menu</title>
+    @include('backend.dependency')
 </head>
 <body>
     <div class="layout-fixed sidebar-expand-lg bg-body-tertiary">
@@ -60,10 +48,10 @@ crossorigin="anonymous"></script>
                 </th>
             </tr>
         </thead>
-        <tbody> 
+        <tbody> {{$i = 1}}
             @foreach($menu as $menus)
                 <td>
-                {{$menus->id}}
+                {{$i++}}
                 </td>
                 <td>
                 {{$menus->menu_name}}
@@ -79,7 +67,11 @@ crossorigin="anonymous"></script>
                     </small>
                 </td>
                 <td class="project-state">
-                {{$menus->is_active}}
+                @if($menus->is_active==1)
+                            Active
+                        @else
+                            Inactive
+                        @endif
                 </td>
                 <td class="project-actions text-right">
                 <button class="btn btn-secondary"  data-toggle="modal" data-target="#menu_{{$menus->id}}">Edit</button>
@@ -102,8 +94,8 @@ crossorigin="anonymous"></script>
                     <label for="name">Menu Link: </label>
                     <input type="text" placeholder="Link" value="{{$menus->link}}" name="menu_link" class="form-control">
                     <div class="form-check form-switch m-1">
-                        <label for="active">Active Status..</label>
-                        <input class="form-check-input" type="checkbox" id="is_active" name="is_active" value="1" checked>
+                        <label for="active">Active Status</label>
+                            <input class="form-check-input" type="checkbox" id="is_active" name="is_active" value="1" {{ $menus->is_active == 1 ? 'checked' : '' }}>
                     </div>
                 </div>
             </div>
@@ -125,7 +117,7 @@ crossorigin="anonymous"></script>
 </div>
 </main>
 
-<div class="modal fade" id="addMenu" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade p-3" id="addMenu" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
             <div class="modal-header">
@@ -142,7 +134,7 @@ crossorigin="anonymous"></script>
                 </div>
             </div>
             <div class="form-check form-switch m-1">
-                        <label for="active">Active Status..</label>
+                        <label for="active">Active Status</label>
                         <input class="form-check-input" type="checkbox" id="is_active" name="is_active" value="1" checked>
                     </div>
             <div class="modal-footer">
@@ -174,7 +166,7 @@ crossorigin="anonymous"></script>
             </div>
         </div>
         </div>
-
+<!-- edit -->
         <div class="modal fade" id="addService" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
