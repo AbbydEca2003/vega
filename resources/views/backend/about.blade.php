@@ -57,7 +57,7 @@
                         </div><br>
                         <div class="col d-flex justify-content-end">
                         <input type="reset"  class="btn btn-secondary m-1" value="Reset Default">
-                        <input type="submit"  class="btn btn-primary m-1" value="Save As">
+                        <button type="submit"  class="btn btn-primary m-1"><i class="fa fa-life-ring"></i> Save as</button>
                         </div>
                     @endforeach
                        

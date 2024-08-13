@@ -48,10 +48,12 @@
                 </th>
             </tr>
         </thead>
-        <tbody> {{$i = 1}}
+        <tbody> @php 
+                    $rownum=1
+                  @endphp
             @foreach($menu as $menus)
                 <td>
-                {{$i++}}
+                {{$rownum++}}
                 </td>
                 <td>
                 {{$menus->menu_name}}
@@ -68,14 +70,14 @@
                 </td>
                 <td class="project-state">
                 @if($menus->is_active==1)
-                            Active
-                        @else
-                            Inactive
-                        @endif
+                        <span class="badge bg-success">Active</span>
+                    @else
+                        <span class="badge bg-warning">Inactive</span>
+                    @endif
                 </td>
                 <td class="project-actions text-right">
-                <button class="btn btn-secondary"  data-toggle="modal" data-target="#menu_{{$menus->id}}">Edit</button>
-                <button class="btn btn-danger" data-toggle="modal" data-target="#removePage" onclick="change({{$menus->id}})">Delete</button>
+                <button class="btn btn-secondary"  data-toggle="modal" data-target="#menu_{{$menus->id}}"><i class="fas fa-pen"></i></button>
+                <button class="btn btn-danger" data-toggle="modal" data-target="#removePage" onclick="change({{$menus->id}})"><i class="fas fa-trash"></i></button>
                 </td>
             </tr>
             <!-- model edit menu -->
@@ -193,10 +195,6 @@
         </div>        
     </div>
     
-    
-
-
- <script src="js/adminlte.js"></script> 
  <script>
         function change(x){
         document.getElementById('menu_id').value = x;

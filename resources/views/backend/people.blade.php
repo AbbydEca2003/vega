@@ -27,7 +27,7 @@
                 <div class="card-title"><h1>Users</h1></div>
                 </div>
                 <div class="col d-flex justify-content-end">
-                    <button class=" btn btn-primary" data-toggle="modal" data-target="#addUser">+ Add User</button>
+                    <a class=" btn btn-primary" data-toggle="modal" data-target="#addUser"><i class="fas fa-user-plus"> Add User</i></a>
                 </div>
                 
               </div>
@@ -43,23 +43,26 @@
                     <th>edit</th>
                   </tr>
                   </thead>
-                  {{$i=1}}
+                <!-- Define i variable -->
+                  @php 
+                    $rownum=1
+                  @endphp
                   @foreach($users as $user)
                   <tr>
-                    <td>{{$i++}}</td>
+                    <td>{{$rownum++}}</td>
                     <td>{{$user->name}}</td>
                     <td>{{$user->email}}</td>
                     <td>
                         @if($user->is_active==1)
                         
-                            Active
+                        <span class="badge bg-success">Active</span>
                         @else
-                            Inactive
+                        <span class="badge bg-warning">Inactive</span>
                         @endif
                         </td>
                     <td><div class="row">
                              <div class="col">
-                                <button class=" btn btn-secondary" data-toggle="modal" data-target="#user_{{$user->id}}" onclick="change({{$user->id}})">Edit</button>
+                                <a class=" btn btn-info" data-toggle="modal" data-target="#user_{{$user->id}}" onclick="change({{$user->id}})"><i class="fas fa-pen"></i></a>
                             </div>
                         </div></td>
                   </tr>
@@ -122,10 +125,10 @@
                     <div class="input-group mb-3"> <input type="text" class="form-control" placeholder="Full Name" name="username" autocomplete="off">
                         <div class="input-group-text" > <span class="bi bi-person"></span> </div>
                     </div>
-                    <div class="input-group mb-3"> <input type="email" class="form-control" placeholder="Email" name="email" autocomplete="off">
+                    <div class="input-group mb-3"> <input type="email" class="form-control" placeholder="Email" name="email" autofill="off" onfocus="this.value=''">
                         <div class="input-group-text"> <span class="bi bi-envelope"></span> </div>
                     </div>
-                    <div class="input-group mb-3"> <input type="password" class="form-control" placeholder="Password" name="password" autocomplete="off">
+                    <div class="input-group mb-3"> <input type="password" class="form-control" placeholder="Password" name="password" >
                         <div class="input-group-text"> <span class="bi bi-lock-fill"></span> </div>
                     </div> <!--begin::Row-->
             </div>
@@ -142,7 +145,6 @@
                 @include('backend.footer')          
     </div>
 
-    <script src="js/adminlte.js"></script> 
     <script>
         function change(x){
         document.getElementById('user_id').value = x;

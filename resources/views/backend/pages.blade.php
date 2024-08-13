@@ -49,10 +49,13 @@
                 </th>
             </tr>
         </thead>
-        <tbody> {{$i = 1}}
+        <tbody> 
+            @php 
+                $rownum=1
+            @endphp
             @foreach($page as $pages)
                 <td>
-                {{$i++}}
+                {{$rownum++}}
                 </td>
                 <td>
                 {{$pages->title}}
@@ -69,10 +72,10 @@
                 </td>
                 <td class="project-state">
                 @if($pages->status==1)
-                            Active
-                        @else
-                            Inactive
-                        @endif
+                        <span class="badge bg-success">Active</span>
+                    @else
+                        <span class="badge bg-warning">Inactive</span>
+                    @endif
                 </td>
                 <td class="project-actions text-right d-flex">
                     <form action="/editPage" method="post">
@@ -80,9 +83,9 @@
                         <input type="hidden" value="{{$pages->id}}" name="page_id">
                         <input type="hidden" value="{{$pages->title}}" name="page_title">
                         <input type="hidden" value="{{$pages->status}}" name="page_status">
-                        <input type="submit" value="Edit" class="btn btn-secondary">
+                        <button type="submit" class="btn btn-secondary"><i class='fas fa-pen'></i></button>
                     </form>
-                    <button class="btn btn-danger" data-toggle="modal" data-target="#removePage" onclick="change({{$pages->id}})">Delete</button>
+                    <button class="btn btn-danger" data-toggle="modal" data-target="#removePage" onclick="change({{$pages->id}})"><i class="fas fa-trash"></i></button>
                 </td>   
             </tr>
             @endforeach
@@ -96,7 +99,6 @@
                 @include('backend.successMessage')         
     </div>
 
-    <script src="js/adminlte.js"></script> 
     <script>
         function change(x){
         document.getElementById('page_id').value = x;
