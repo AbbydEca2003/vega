@@ -27,7 +27,7 @@
                 <div class="card-title"><h1>Users</h1></div>
                 </div>
                 <div class="col d-flex justify-content-end">
-                    <a class=" btn btn-primary" data-toggle="modal" data-target="#addUser"><i class="fas fa-user-plus"> Add User</i></a>
+                    <a class=" btn btn-primary" data-toggle="modal" data-target="#addUser"><i class="fas fa-user-plus" title="Add New User"> Add User</i></a>
                 </div>
                 
               </div>
@@ -62,7 +62,7 @@
                         </td>
                     <td><div class="row">
                              <div class="col">
-                                <a class=" btn btn-info" data-toggle="modal" data-target="#user_{{$user->id}}" onclick="change({{$user->id}})"><i class="fas fa-pen"></i></a>
+                                <a class=" btn btn-info" data-toggle="modal" data-target="#user_{{$user->id}}" onclick="change({{$user->id}})"><i class="fas fa-pen" title="Edit User data"></i></a>
                             </div>
                         </div></td>
                   </tr>

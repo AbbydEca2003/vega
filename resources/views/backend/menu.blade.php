@@ -18,7 +18,7 @@
         <div class="col">
             <div class="card-title"><h1>Menu</h1></div>
         <div class="col d-flex justify-content-end">
-            <button class="btn btn-primary" data-toggle="modal" data-target="#addMenu">+ Add</button>
+            <button class="btn btn-primary" data-toggle="modal" data-target="#addMenu"><i class="fas fa-plus" title="Add new Menu"> Add Menu</i></button>
                 </div>
         </div>
     
@@ -76,8 +76,8 @@
                     @endif
                 </td>
                 <td class="project-actions text-right">
-                <button class="btn btn-secondary"  data-toggle="modal" data-target="#menu_{{$menus->id}}"><i class="fas fa-pen"></i></button>
-                <button class="btn btn-danger" data-toggle="modal" data-target="#removePage" onclick="change({{$menus->id}})"><i class="fas fa-trash"></i></button>
+                <button class="btn btn-secondary"  data-toggle="modal" data-target="#menu_{{$menus->id}}"><i class="fas fa-pen" title="Edit Menu"></i></button>
+                <button class="btn btn-primary" data-toggle="modal" data-target="#removePage" onclick="change({{$menus->id}})"><i class="fas fa-trash" title="Delete Menu"></i></button>
                 </td>
             </tr>
             <!-- model edit menu -->

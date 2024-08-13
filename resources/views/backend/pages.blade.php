@@ -20,7 +20,7 @@
             <div class="card-title"><h1>Pages</h1></div>
         </div>
         <div class="col d-flex justify-content-end">
-            <a href="/newPage"><button class="btn btn-primary">+ Add</button><br><br></a>
+            <a href="/newPage"><button class="btn btn-primary"><i class="fas fa-plus"> Add User</i></button><br><br></a>
         </div>
     </div>
     
@@ -83,9 +83,9 @@
                         <input type="hidden" value="{{$pages->id}}" name="page_id">
                         <input type="hidden" value="{{$pages->title}}" name="page_title">
                         <input type="hidden" value="{{$pages->status}}" name="page_status">
-                        <button type="submit" class="btn btn-secondary"><i class='fas fa-pen'></i></button>
+                        <button type="submit" class="btn btn-secondary"><i class='fas fa-pen' title="Edit Page"></i></button>
                     </form>
-                    <button class="btn btn-danger" data-toggle="modal" data-target="#removePage" onclick="change({{$pages->id}})"><i class="fas fa-trash"></i></button>
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#removePage" onclick="change({{$pages->id}})"><i class="fas fa-trash" title="Delete Page"></i></button>
                 </td>   
             </tr>
             @endforeach

@@ -23,8 +23,8 @@
           <input type="text" class="form-control" id="" placeholder="Enter page name" name="title">
         </div>
         <div class="form-group">
-          <label for="exampleInputPassword1">Page link</label>
-          <input type="text" class="form-control" id="" placeholder="">
+          <label for="">Page link</label>
+          <input type="text" class="form-control" id="" placeholder="" disabled>
         </div>
         <div class="form-group">
           <label for="exampleInputFile">Page Logo</label>
