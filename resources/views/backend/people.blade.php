@@ -62,7 +62,7 @@
                         </td>
                     <td><div class="row">
                              <div class="col">
-                                <a class=" btn btn-info" data-toggle="modal" data-target="#user_{{$user->id}}" onclick="change({{$user->id}})"><i class="fas fa-pen" title="Edit User data"></i></a>
+                                <a class=" btn btn-secondary" data-toggle="modal" data-target="#user_{{$user->id}}" onclick="change({{$user->id}})"><i class="fas fa-pen" title="Edit User data"></i></a>
                             </div>
                         </div></td>
                   </tr>

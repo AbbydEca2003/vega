@@ -49,6 +49,11 @@
                                         <p>Menu</p>
                                     </a> </li>
                         </li>
+                        <li class="nav-item nav-treeview"> 
+                            <li class="nav-item"> <a href="/slider" class="nav-link"> <i class="nav-icon bi bi-pencil-square"></i>
+                                        <p>Slider</p>
+                                    </a> </li>
+                        </li>
                         <li class="user-footer"><a href="/logout" class="btn btn-secondary text-white">Sign out</a> </li> <!--end::Menu Footer-->
                     </ul> <!--end::Sidebar Menu-->
                 </nav>

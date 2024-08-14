@@ -20,7 +20,7 @@
         <div class="form-group">
           @csrf
           <label for="pagr_name">Page name</label>
-          <input type="text" class="form-control" id="" placeholder="Enter page name" name="title">
+          <input type="text" class="form-control" id="" placeholder="Enter page name" name="title" required>
         </div>
         <div class="form-group">
           <label for="">Page link</label>

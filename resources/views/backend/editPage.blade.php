@@ -21,7 +21,7 @@
         <div class="form-group">
           @csrf
           <label for="pageName">Page name</label>
-          <input type="text" class="form-control" id="" placeholder="Enter page name" name="title" value="{{$title}}" disabled>
+          <input type="text" class="form-control" id="" placeholder="Enter page name" name="title" value="{{$title}}" required>
         </div>
         <div class="form-group">
           <label for="pageLink">Page link</label>
@@ -40,7 +40,7 @@
             @if($status == 1)
             <input class="form-check-input" type="checkbox" id="is_active" name="is_active" value="1" checked>
             @else
-            <input class="form-check-input" type="checkbox" id="is_active" name="is_active" value="1">
+            <input class="form-check-input" type="checkbox" id="is_active" name="is_active" value="0">
             @endif
          </div>
         </div>
@@ -52,6 +52,8 @@
           </div>
         </div>
        <footer class="d-flex justify-content-end">
+       <input type="hidden" value="{{$title}}" name="checkTitle">
+          <input type="hidden" value="{{$pageId}}" name="pageId">
           <input type="submit" value="Save" class="btn btn-primary m-1">
        </footer>
     </form>

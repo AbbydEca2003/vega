@@ -91,10 +91,15 @@
             <form action="/editMenu" method="post">
                     @csrf
                     <div class="row">
+                    
                     <label for="name">Menu Title: </label>
-                    <input type="text" placeholder="Name" value=" {{$menus->menu_name}}" name="menu_name" class="form-control">
+                    <div class="input-group mb-3"> <input type="text" class="form-control" placeholder="Full Name" name="menu_name" value="{{$menus->menu_name}}">
+                        <div class="input-group-text"> <span class="bi bi"></span> </div>
+                    </div>
                     <label for="name">Menu Link: </label>
-                    <input type="text" placeholder="Link" value="{{$menus->link}}" name="menu_link" class="form-control">
+                    <div class="input-group mb-3"> <input type="text" class="form-control" placeholder="Full Name" name="menu_link" value="{{$menus->link}}">
+                        <div class="input-group-text"> <span class="bi bi-link"></span> </div>
+                    </div>
                     <div class="form-check form-switch m-1">
                         <label for="active">Active Status</label>
                             <input class="form-check-input" type="checkbox" id="is_active" name="is_active" value="1" {{ $menus->is_active == 1 ? 'checked' : '' }}>
@@ -119,7 +124,7 @@
 </div>
 </main>
 
-<div class="modal fade p-3" id="addMenu" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade p-3" id="addMenu" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
             <div class="modal-header">

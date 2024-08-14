@@ -57,4 +57,7 @@ Route::group(['middleware'=> 'auth'], function(){
     Route::post('/editMenu', 'MenuController@editMenu');
     Route::post('/setMenu', 'MenuController@setMenu');
     Route::post('removeMenu', 'MenuController@removeMenu');
+
+    Route::get('/slider', 'SliderController@getData');
+
 });
