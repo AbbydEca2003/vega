@@ -11,7 +11,7 @@
                         <h1>Office</h1><p>{{$data->address}}</p>
                         <p>Phone: {{$data->phone}}</p>
                         <p>Email: {{$data->email}}</p>
-                        
+                        @endforeach
                     </div>
                     <div class="col">
                         <form action="/sendMessage" method="post">
@@ -49,5 +49,5 @@
                         </form>
                     </div>
                 </div>
-            </div>   @endforeach
+            </div>   
         </section>

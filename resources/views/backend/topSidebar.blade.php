@@ -50,7 +50,7 @@
                                     </a> </li>
                         </li>
                         <li class="nav-item nav-treeview"> 
-                            <li class="nav-item"> <a href="/slider" class="nav-link"> <i class="nav-icon bi bi-pencil-square"></i>
+                            <li class="nav-item"> <a href="/slide" class="nav-link"> <i class="nav-icon bi bi-pencil-square"></i>
                                         <p>Slider</p>
                                     </a> </li>
                         </li>

@@ -115,15 +115,15 @@
             </div>
         </div>        
     </div>
-            
+    @endforeach
         </tbody>
     </table>
   </div>
+  </div> 
   <!-- /.card-body -->
 </div>
-</div>
 </main>
-
+<!-- new menu -->
 <div class="modal fade p-3" id="addMenu" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -135,9 +135,13 @@
                     @csrf
                     <div class="row">
                     <label for="name">Menu Title: </label>
-                    <input type="text" placeholder="Name" value="" name="title" class="form-control">
+                    <div class="input-group mb-3"> <input type="text" class="form-control" placeholder="Full Name" name="menu_name">
+                        <div class="input-group-text"> <span class="bi bi"></span> </div>
+                    </div>
                     <label for="name">Menu Link: </label>
-                    <input type="text" placeholder="Link" value="" name="link" class="form-control">
+                    <div class="input-group mb-3"> <input type="text" class="form-control" placeholder="Full Name" name="menu_link">
+                        <div class="input-group-text"> <span class="bi bi-link"></span> </div>
+                    </div>
                 </div>
             </div>
             <div class="form-check form-switch m-1">
@@ -154,7 +158,7 @@
         </div>        
     </div>
    
-    @endforeach
+   
     <!-- Modal delete page-->
     <div class="modal fade" id="removePage" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -173,32 +177,7 @@
             </div>
         </div>
         </div>
-<!-- edit -->
-        <div class="modal fade" id="addService" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="addService">Add new menu item</h5>
-            </div>
-            <div class="modal-body">
-            <form action="/setMenu" method="post">
-                    @csrf
-                    <div class="row">
-                    <label for="name">Menu Title: </label>
-                    <input type="text" placeholder="Name" value="" name="title" class="form-control">
-                    <label for="name">Menu Link: </label>
-                    <input type="text" placeholder="Link" value="" name="link" class="form-control">
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <input type="hidden" id="user_id" name="user_id">
-                    <input type="submit" value="Add" class="btn btn-primary">
-                </form>
-            </div>
-            </div>
-        </div>        
-    </div>
+
     
  <script>
         function change(x){

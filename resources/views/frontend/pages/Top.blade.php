@@ -7,22 +7,21 @@
         <p>Connecting you to the best in the business</p>
       </div>
     </div>
-    
+    @foreach($slider as $slide)
+    @if($slide->is_active === '1')
     <div class="carousel-item">
-      <img src="https://via.placeholder.com/200x100" class="d-block w-100" alt="...">
+      <img src="https://via.placeholder.com/200x100" class="d-block w-100" alt="{{$slide->slide_title}}">
       <div class="carousel-caption d-none d-md-block">
-        <h5>First slide label</h5>
-        <a class="btn btn-primary btn-xl text-uppercase" href="#">Tell Me More</a>
+        <h3>{{$slide->slide_title}}</h3>
+        <p>{{$slide->slide_sub_title}}</p>
+        @if($slide->button_title)
+        <a class="btn btn-primary btn-xl text-uppercase" href="{{$slide->button_link}}">{{$slide->button_title}}</a>
+        @endif
       </div>
     </div>
-    <div class="carousel-item">
-      <img src="https://via.placeholder.com/200x100" class="d-block w-100" alt="...">
-      <div class="carousel-caption d-none d-md-block">
-        <h5>First slide label</h5>
-        <p>Some representative placeholder content for the first slide.</p>
-      </div>
-    </div>
-  </div>
+      @endif
+    @endforeach
+
   <button class="carousel-control-prev" type="button" data-bs-target="#head" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Previous</span>

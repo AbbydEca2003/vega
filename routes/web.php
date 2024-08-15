@@ -17,6 +17,7 @@ Route::get('/', 'FrontendController@getData');
 Route::post('/sendMessage', 'FrontendController@setMessage');
 
 
+
 Route::get('/login', function () {
          return view('backend.login');
      });
@@ -57,7 +58,9 @@ Route::group(['middleware'=> 'auth'], function(){
     Route::post('/editMenu', 'MenuController@editMenu');
     Route::post('/setMenu', 'MenuController@setMenu');
     Route::post('removeMenu', 'MenuController@removeMenu');
-
-    Route::get('/slider', 'SliderController@getData');
-
+    
+    Route::get('/slide', 'SliderController@getSlide');
+    Route::post('/editSlide', 'SliderController@setSlide');
+    Route::post('/setSlide', 'SliderController@setSlide');
+    Route::post('/removeSlide', 'SliderController@removeSlide');
 });

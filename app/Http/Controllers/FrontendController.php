@@ -9,6 +9,7 @@ use App\Model\Menu;
 use App\Model\Page;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
+use App\Model\Slider;
 
 class FrontendController extends Controller
 {
@@ -21,13 +22,11 @@ class FrontendController extends Controller
 
     public function getData(): View{
         $page=Page::all();
-        $status = ['active','active', 'active','active'];
-        $file =['frontend.whyUs','frontend.services', 'frontend.aboutUs', 'frontend.whyUs'];
-
+        $slider = Slider::all();
         $aboutData = $this->aboutData;
         $menuData = $this->menuData;
         //dd($status);
-        return view('frontend.welcome',compact('file','status', 'aboutData', 'menuData','page'));
+        return view('frontend.welcome',compact('file', 'aboutData', 'menuData','page', 'slider'));
     }
 
     public function setMessage(Request $request): View{
