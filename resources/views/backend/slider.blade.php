@@ -19,7 +19,7 @@
             <button class="btn btn-primary" data-toggle="modal" data-target="#addSlide"><i class="fas fa-plus" title="Add new Menu"> Add Slider</i></button>
                 </div>
         </div>
-        
+        <hr>
   </div>
   <div class="card-body p-0">
     <table class="table table-bordered table-striped">

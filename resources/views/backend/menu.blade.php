@@ -22,7 +22,7 @@
                 </div>
         </div>
     
-
+<hr>
   </div>
   <div class="card-body p-0">
     <table class="table table-bordered table-striped">
@@ -43,7 +43,7 @@
                 <th>
                     Status
                 </th>
-                <th style="width: 20%" class="text-center">
+                <th style="width: 15%" class="text-center">
                     Edit
                 </th>
             </tr>

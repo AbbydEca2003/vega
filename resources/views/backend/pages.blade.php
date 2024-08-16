@@ -20,7 +20,7 @@
             <div class="card-title"><h1>Pages</h1></div>
         </div>
         <div class="col d-flex justify-content-end">
-            <a href="/newPage"><button class="btn btn-primary"><i class="fas fa-plus"> Add Page</i></button><br><br></a>
+            <a href="/newPage"><button class="btn btn-primary"><i class="fas fa-plus"> Add Page</i></button></a>
         </div>
     </div>
     
