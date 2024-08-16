@@ -2,7 +2,7 @@
 <div class="modal fade" id="confirmation" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
-            <div class="modal-body">
+            <div class="modal-header">
             <h4>{!! \Session::get('success') !!}</h4>
             <h4>{{$errors->first()}}</h4>
             </div>

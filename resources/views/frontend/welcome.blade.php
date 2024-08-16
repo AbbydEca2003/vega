@@ -39,17 +39,11 @@
             </div>
         </nav>
         <!-- Masthead-->
-        <header class="masthead">
-            <div class="container">
-                <div class="masthead-heading text-uppercase shadow">Connecting you to the best in the business</div>
-                <a class="btn btn-primary btn-xl text-uppercase" href="#about_us">Tell Me More</a>
-            </div>
-        </header>
-       
+        
         
         @foreach($page as $page)
         @if($page->status === '1')
-            @include('frontend.'.$page->title)
+            @include('frontend/pages.'.$page->title)
         @endif
         @endforeach
        

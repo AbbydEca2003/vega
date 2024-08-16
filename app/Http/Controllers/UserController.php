@@ -46,6 +46,7 @@ class UserController extends Controller
 
     public function getUser(){
         $users = $this->users;
+        $i=1;
         return view('backend.people',['users'=>$users]);
     }
 

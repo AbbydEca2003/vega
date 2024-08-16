@@ -5,16 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.3.0/styles/overlayscrollbars.min.css" integrity="sha256-dSokZseQNT08wYEWiz5iLI8QPlKxG+TswNRD8k35cpg=" crossorigin="anonymous"><!--end::Third Party Plugin(OverlayScrollbars)--><!--begin::Third Party Plugin(Bootstrap Icons)-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.min.css" integrity="sha256-Qsx5lrStHZyR9REqhUF8iQt73X06c8LGIUPzpOhwRrI=" crossorigin="anonymous"><!--end::Third Party Plugin(Bootstrap Icons)--><!--begin::Required Plugin(AdminLTE)-->
-    <link rel="stylesheet" href="/css/adminlte.css"><!--end::Required Plugin(AdminLTE)--><!-- apexcharts -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-integrity="sha384q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-crossorigin="anonymous"></script> 
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" 
-integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
-crossorigin="anonymous"></script> 
     <title>Vega | People</title>
+    @include('backend.dependency')
 
 </head>
 <body>
@@ -24,7 +16,7 @@ crossorigin="anonymous"></script>
                <main class="app-main p-3">
                 
 
-                                     <!-- new table  -->
+            <!-- new table  -->
        <section class="content">
       <div class="container-fluid">
         <div class="row">
@@ -35,7 +27,7 @@ crossorigin="anonymous"></script>
                 <div class="card-title"><h1>Users</h1></div>
                 </div>
                 <div class="col d-flex justify-content-end">
-                    <button class=" btn btn-primary" data-toggle="modal" data-target="#addUser">+ Add User</button>
+                    <a class=" btn btn-primary" data-toggle="modal" data-target="#addUser"><i class="fas fa-user-plus" title="Add New User"> Add User</i></a>
                 </div>
                 
               </div>
@@ -51,15 +43,26 @@ crossorigin="anonymous"></script>
                     <th>edit</th>
                   </tr>
                   </thead>
+                <!-- Define i variable -->
+                  @php 
+                    $rownum=1
+                  @endphp
                   @foreach($users as $user)
                   <tr>
-                    <td>{{$user->id}}</td>
+                    <td>{{$rownum++}}</td>
                     <td>{{$user->name}}</td>
                     <td>{{$user->email}}</td>
-                    <td>{{$user->is_active}}</td>
+                    <td>
+                        @if($user->is_active==1)
+                        
+                        <span class="badge bg-success">Active</span>
+                        @else
+                        <span class="badge bg-warning">Inactive</span>
+                        @endif
+                        </td>
                     <td><div class="row">
                              <div class="col">
-                                <button class=" btn btn-secondary" data-toggle="modal" data-target="#user_{{$user->id}}" onclick="change({{$user->id}})">Edit</button>
+                                <a class=" btn btn-secondary" data-toggle="modal" data-target="#user_{{$user->id}}" onclick="change({{$user->id}})"><i class="fas fa-pen" title="Edit User data"></i></a>
                             </div>
                         </div></td>
                   </tr>
@@ -83,12 +86,12 @@ crossorigin="anonymous"></script>
                     <div class="input-group mb-3"> <input type="password" class="form-control" placeholder="Password" name="password">
                         <div class="input-group-text"> <span class="bi bi-lock-fill"></span> </div>
                     </div> <!--begin::Row-->
-                    <div class="input-group mb-3">Active Status..
-                        <!-- <input type="radio" name="is_active" id="is_active" data-toggle="toggle" value="0">
-                        <input type="radio" name="is_active" id="is_active" data-toggle="toggle" value="1" default> -->
-                            
+                    <div class="input-group mb-3">
+                           
                         <div class="form-check form-switch">
-                                <input class="form-check-input" type="checkbox" id="is_active" name="is_active" value="1" checked>
+                        Active Status
+                        <input class="form-check-input" type="checkbox" id="is_active" name="is_active" value="1" {{ $user->is_active == 1 ? 'checked' : '' }}>
+                               
                         </div>
                     </div>
             </div>
@@ -101,7 +104,6 @@ crossorigin="anonymous"></script>
             </div>
         </div>
         </div>
-
                   @endforeach
                   </tbody>
                   <tfoot>
@@ -120,13 +122,13 @@ crossorigin="anonymous"></script>
             <div class="modal-body">
                 <form action="/setUser" method="post" id="{{$user->id}}">
                     @csrf
-                    <div class="input-group mb-3"> <input type="text" class="form-control" placeholder="Full Name" name="username">
+                    <div class="input-group mb-3"> <input type="text" class="form-control" placeholder="Full Name" name="username" autocomplete="off">
                         <div class="input-group-text" > <span class="bi bi-person"></span> </div>
                     </div>
-                    <div class="input-group mb-3"> <input type="email" class="form-control" placeholder="Email" name="email" value=" ">
+                    <div class="input-group mb-3"> <input type="email" class="form-control" placeholder="Email" name="email" autofill="off" onfocus="this.value=''">
                         <div class="input-group-text"> <span class="bi bi-envelope"></span> </div>
                     </div>
-                    <div class="input-group mb-3"> <input type="password" class="form-control" placeholder="Password" name="password">
+                    <div class="input-group mb-3"> <input type="password" class="form-control" placeholder="Password" name="password" >
                         <div class="input-group-text"> <span class="bi bi-lock-fill"></span> </div>
                     </div> <!--begin::Row-->
             </div>
@@ -143,7 +145,6 @@ crossorigin="anonymous"></script>
                 @include('backend.footer')          
     </div>
 
-    <script src="js/adminlte.js"></script> 
     <script>
         function change(x){
         document.getElementById('user_id').value = x;
@@ -154,36 +155,8 @@ crossorigin="anonymous"></script>
     </section>
 
 
-    <!-- DataTables  & Plugins -->
-<script src="plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-<script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-<script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-<script src="plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-<script src="plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-<script src="plugins/jszip/jszip.min.js"></script>
-<script src="plugins/pdfmake/pdfmake.min.js"></script>
-<script src="plugins/pdfmake/vfs_fonts.js"></script>
-<script src="plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-<script src="plugins/datatables-buttons/js/buttons.print.min.js"></script>
-<script src="plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-<script>
-  $(function () {
-    $("#example1").DataTable({
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
-    });
-  });
-</script>
+
 @include('backend.successMessage')  
-</script>
 
 </body>
 </html>

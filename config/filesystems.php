@@ -1,7 +1,10 @@
 <?php
 
 return [
-
+'local' => [
+    'driver' => 'local',
+    'root' =>  'public/uploads/images',
+],
     /*
     |--------------------------------------------------------------------------
     | Default Filesystem Disk
