@@ -1,8 +1,8 @@
- <!-- Why us -->
+<!-- Why us -->
  <section class="page-section bg-light" id="about_us">
             <div class="container">
                 <div class="text-center">
-                    <h2 class="section-heading text-uppercase">Why Us?</h3>
+                    <h2 class="section-heading text-uppercase">Why Us?</h2>
                 </div>
                 <div class="row p-3 m-3">
                     <div class="col"><img src="/assets/img/portfolio/1.jpg" alt="" class="rounded"></div>

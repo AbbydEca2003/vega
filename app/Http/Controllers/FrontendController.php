@@ -29,23 +29,34 @@ class FrontendController extends Controller
         return view('frontend.welcome',compact('file', 'aboutData', 'menuData','page', 'slider'));
     }
 
-    public function setMessage(Request $request): View{
-        $page=Page::all();
-        $message = $request->validate([
-            'name' => ['required'],
-            'email' => ['required', 'email'],
-            'phone' => ['required'],
-            'message' => ['required'],
-        ]);
-        $db = new Message();
-        $db->name = $message['name'];
-        $db->email = $message['email'];
-        $db->phone = $message['phone'];
-        $db->message = $message['message'];
-        $db->save();
-        //dd($db);
-        $aboutData = $this->aboutData;
-        $menuData = $this->menuData;
-        return view('frontend.welcome',compact('aboutData','menuData', 'page'));
-    }
+    public function setMessage(Request $request)
+{
+    // Validate the request
+    $validated = $request->validate([
+        'name' => ['required'],
+        'email' => ['required', 'email'],
+        'phone' => ['required'],
+        'message' => ['required'],
+    ]);
+
+    // Save the message to the database
+    $db = new Message();
+    $db->name = $validated['name'];
+    $db->email = $validated['email'];
+    $db->phone = $validated['phone'];
+    $db->message = $validated['message'];
+    $db->save();
+
+    // Retrieve data needed for the homepage
+    $page = Page::all();
+    $slider = Slider::all();
+    $aboutData = $this->aboutData;
+    $menuData = $this->menuData;
+
+    // Redirect to homepage with data and success message
+    return redirect('/')
+        ->with(compact('aboutData', 'menuData', 'page', 'slider'))
+        ->with('success', 'Your message has been successfully sent.');
+}
+
 }

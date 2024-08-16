@@ -1,16 +1,12 @@
 <div id="head" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="https://via.placeholder.com/200x100" class="d-block w-100" alt="...">
-      <div class="carousel-caption d-none d-md-block">
-        <h3>Connecting you to the best in the business</h3>
-        <p>Connecting you to the best in the business</p>
-      </div>
-    </div>
+    
+    @php $head = 1;
+    @endphp
     @foreach($slider as $slide)
     @if($slide->is_active === '1')
-    <div class="carousel-item">
-      <img src="https://via.placeholder.com/200x100" class="d-block w-100" alt="{{$slide->slide_title}}">
+    <div class="carousel-item @if($head) active @endif">
+      <img src="images/{{$slide->slide_link}}" class="d-block w-100" alt="{{$slide->slide_title}}">
       <div class="carousel-caption d-none d-md-block">
         <h3>{{$slide->slide_title}}</h3>
         <p>{{$slide->slide_sub_title}}</p>
@@ -20,6 +16,8 @@
       </div>
     </div>
       @endif
+      @php $head = 0;
+    @endphp
     @endforeach
 
   <button class="carousel-control-prev" type="button" data-bs-target="#head" data-bs-slide="prev">
@@ -29,5 +27,5 @@
   <button class="carousel-control-next" type="button" data-bs-target="#head" data-bs-slide="next">
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Next</span>
-  </button>
+  </button>@include('backend.successMessage')  
 </div>

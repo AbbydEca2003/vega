@@ -35,13 +35,12 @@ class SliderController extends Controller
             $slide->slide_sub_title = $data['slide_sub_title'];
             $slide->button_title = $button_title;
             $slide->button_link = $button_link;
-            $slide->slide_link = 'dsd';
             $slide->is_active = $request->has('is_active') ? 1 : 0;
-            $slide->save();
 
             $imageName = time().'.'.request()->image->getClientOriginalExtension();
             request()->image->move(public_path('images'), $imageName);
-
+            $slide->slide_link = $imageName;
+            $slide->save();
             return redirect('/slide')->with('success','Data update success');
         }else{
             return back()->with('error', 'No image selected');
