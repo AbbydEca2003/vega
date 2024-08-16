@@ -26,7 +26,7 @@ class FrontendController extends Controller
         $aboutData = $this->aboutData;
         $menuData = $this->menuData;
         //dd($status);
-        return view('frontend.welcome',compact('file', 'aboutData', 'menuData','page', 'slider'));
+        return view('frontend.welcome',compact( 'aboutData', 'menuData','page', 'slider'));
     }
 
     public function setMessage(Request $request)
