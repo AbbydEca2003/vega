@@ -12,11 +12,11 @@ class DatabaseSeeder extends Seeder
     public function run():void
     {
         $this->call([
-            // AboutSeeder::class,
-            // AdminSeed::class,
-            // MessageSeed::class,
-            // PageSeeder::class,
-            // MenuSeeder::class,
+            AboutSeeder::class,
+            AdminSeed::class,
+            MessageSeed::class,
+            PageSeeder::class,
+            MenuSeeder::class,
             SliderSeeder::class,
         ]);
     }
