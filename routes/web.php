@@ -51,6 +51,7 @@ Route::group(['middleware'=> 'auth'], function(){
     Route::get('/newPage', function () {
         return view('backend.newPage');
     });
+    Route::post('/setPage', 'PageController@modifyPage');
     Route::post('/setPage', 'PageController@setPage');
     Route::post('/removePage', 'PageController@removePage');
 

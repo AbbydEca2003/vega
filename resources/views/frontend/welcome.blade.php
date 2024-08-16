@@ -39,11 +39,12 @@
             </div>
         </nav>
         <!-- Masthead-->
-        
-        
+
+        @include('frontend.pages.Top')
+
         @foreach($page as $page)
         @if($page->status === '1')
-            @include('frontend/pages.'.$page->title)
+            {!!$page->content!!}
         @endif
         @endforeach
        

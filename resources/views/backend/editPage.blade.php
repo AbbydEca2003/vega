@@ -16,7 +16,7 @@
     </div>
     <!-- /.card-header -->
     <!-- form start -->
-    <form action="/createPage" method="post">
+    <form action="/setPage" method="post">
       <div class="card-body">
         <div class="form-group">
           @csrf
@@ -47,7 +47,7 @@
         <div>
           <div class="card-body container">
             <textarea id="summernote" name="code">
-              {{$fileContent}}
+              {{$content}}
             </textarea>
           </div>
         </div>

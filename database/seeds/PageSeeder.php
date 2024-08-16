@@ -18,6 +18,7 @@ class PageSeeder extends Seeder
             'updated_at' => Carbon::now(), 
             'title' => 'Title',
             'status' => "active",
+            'status' => "<h1>Hello</h1>",
 
         ]);
     }
