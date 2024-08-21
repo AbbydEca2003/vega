@@ -33,7 +33,7 @@
                     #
                 </th>
                 <th style="width: 30%">
-                    Menu Name
+                    Page Name
                 </th>
                 <th style="width: 30%">
                     Created Date
@@ -80,6 +80,7 @@
                 <td class="project-actions text-right d-flex">
                     <form action="/editPage" method="post">
                         @csrf
+                        <input type="hidden" value="{{$pages->content}}" name="content">
                         <input type="hidden" value="{{$pages->id}}" name="page_id">
                         <input type="hidden" value="{{$pages->title}}" name="page_title">
                         <input type="hidden" value="{{$pages->status}}" name="page_status">
