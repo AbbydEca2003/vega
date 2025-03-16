@@ -22,7 +22,9 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
             <div class="container">
-                <a class="navbar-brand" href="#page-top"><img src="assets/vega logoO.png" alt="..."/></a><div class="comp-name">Vega Business</div>
+                @foreach($aboutData as $data)
+                <a class="navbar-brand" href="#page-top"><img src="assets/vega logoO.png" alt="..."/></a><div class="comp-name">{{$data->Company_name}}</div>
+                @endforeach
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="fas fa-bars ms-1"></i>

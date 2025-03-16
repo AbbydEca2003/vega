@@ -53,7 +53,6 @@ class UserController extends Controller
     public function setUser (Request $request){
         $newUser = $request->validate([
             'username' => ['required'],
-            'password' => ['required'],
             'email' => ['required', 'email'],
         ]);
         //dd($newUser);
@@ -77,9 +76,8 @@ class UserController extends Controller
         $n = User::find($userId);
         $n->name =  $validated['username'];
         $n->email =  $validated['email'];
-
         $n->is_active = $request->has('is_active') ? 1 : 0;
-        //$n->password =  Hash::make($validated['password']);
+        $n->password =  Hash::make($request->password);
         $n->email_verified_at =  Carbon::now();
         $n->save();
         return redirect('/user')->with('success','User has been edited successfully');
