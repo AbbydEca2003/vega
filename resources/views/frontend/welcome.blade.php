@@ -8,7 +8,7 @@
         <meta name="author" content="" />
         <title>Vega</title>
         <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/vega logoO.png" />
+        <link rel="icon" type="image/x-icon" href="logo/logo.png" />
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
         <!-- Google fonts-->
@@ -22,9 +22,7 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
             <div class="container">
-                @foreach($aboutData as $data)
-                <a class="navbar-brand" href="#page-top"><img src="assets/vega logoO.png" alt="..."/></a><div class="comp-name">{{$data->Company_name}}</div>
-                @endforeach
+                <a class="navbar-brand" href="#page-top"><img src="logo/logo.png" alt="..."/></a><div class="comp-name">Vega Business</div>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="fas fa-bars ms-1"></i>

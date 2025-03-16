@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Model\Slider;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
 
 class SliderController extends Controller
 {
@@ -76,9 +77,22 @@ class SliderController extends Controller
         $validated = $request->validate([
             'slide_id' => ['required'],
         ]);
-        $slideId = $validated['slide_id'];
-        $slide = Slider::find($slideId);
-        $slide->delete();
-        return redirect('/slide')->with('success', 'Page removed successfully');
+        try {
+            $slideId = $validated['slide_id'];
+            $slide = Slider::findOrFail($slideId);  
+            $slideLink = 'images/'.$slide->slide_link;
+
+            if(file_exists($slideLink)) {
+                unlink($slideLink); 
+                $slide->delete(); 
+                return redirect('/slide')->with('success','Data deleted success');
+            } else {
+                return redirect('/slide')->with('success','Error deleting slide ');
+            }
+            
+            
+        } catch (ModelNotFoundException $e) {
+            return response()->json(['error' => 'Slide not found'], 404);
+        }
     }
 }

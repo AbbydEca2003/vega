@@ -15,7 +15,7 @@
 <!--begin::Sidebar-->
         
 <aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="light"> <!--begin::Sidebar Brand-->
-            <div class="sidebar-brand"> <!--begin::Brand Link--> <a href="/admin" class="brand-link"> <!--begin::Brand Image--> <img src="/assets/vega logoO.png" alt="VegaLogo" class="brand-image opacity-75"> <!--end::Brand Image--> </a>  </div> 
+            <div class="sidebar-brand"> <!--begin::Brand Link--> <a href="/admin" class="brand-link"> <!--begin::Brand Image--> <img src="/logo/logo.png" alt="VegaLogo" class="brand-image opacity-75"> <!--end::Brand Image--> </a>  </div> 
             <div class="sidebar-wrapper">
                 <nav class="mt-2"> <!--begin::Sidebar Menu-->
                     <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview" role="menu" data-accordion="false">

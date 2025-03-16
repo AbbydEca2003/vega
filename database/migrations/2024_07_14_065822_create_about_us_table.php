@@ -23,6 +23,8 @@ class CreateAboutUsTable extends Migration
             $table->string('twitter');
             $table->string('facebook');
             $table->string('linkedin');
+            $table->string('privacy_policy');
+            $table->string('terms_of_use');
         });
     }
 

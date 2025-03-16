@@ -10,8 +10,8 @@
                         <a class="btn btn-dark btn-social mx-2" href="{{$data->linkedin}}" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                     <div class="col-lg-4 text-lg-end">
-                        <a class="link-dark text-decoration-none me-3" href="#!">Privacy Policy</a>
-                        <a class="link-dark text-decoration-none" href="#!">Terms of Use</a>
+                        <a class="link-dark text-decoration-none me-3" href="{{$data->privacy_policy}}">Privacy Policy</a>
+                        <a class="link-dark text-decoration-none" href="{{$data->terms_of_use}}">Terms of Use</a>
                     </div>
                     @endforeach
                 </div>

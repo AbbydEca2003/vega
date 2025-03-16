@@ -136,21 +136,21 @@
             <form action="/setSlide" method="post" enctype="multipart/form-data">
             @csrf
             <label for="title">Slide title:</label><label for="subtitle">Slide subtitle:</label>
-                    <div class="input-group mb-3"> <input type="text" class="form-control" placeholder="Slide Name" name="slide_title">
+                    <div class="input-group mb-3"> <input type="text" class="form-control" placeholder="Slide Name" name="slide_title" required>
                         <div class="input-group-text"> <span class="bi bi-person"></span> </div>
                     </div>
                     <label for="subtitle">Slide subtitle:</label>
-                    <div class="input-group mb-3"> <input type="text" class="form-control" placeholder="sub title" name="slide_sub_title">
+                    <div class="input-group mb-3"> <input type="text" class="form-control" placeholder="sub title" name="slide_sub_title" required>
                     </div>
                     <label for="button">Button name:</label>
-                    <div class="input-group mb-3"> <input type="text" class="form-control" name="button_title" placeholder="Button title">
+                    <div class="input-group mb-3"> <input type="text" class="form-control" name="button_title" placeholder="Button title" required>
                     </div>
                     <label for="button link">Button link:</label>
-                    <div class="input-group mb-3"> <input type="text" class="form-control" name="button_link" placeholder="Button link">
+                    <div class="input-group mb-3"> <input type="text" class="form-control" name="button_link" placeholder="Button link" required>
                     </div>
                     <div class="form-group">
                         <label for="image">Upload Image</label>
-                        <input type="file" class="form-control" id="image" name="image">
+                        <input type="file" class="form-control" id="image" name="image" required>
                     </div>
                     <div class="input-group mb-3">
                         <div class="form-check form-switch">

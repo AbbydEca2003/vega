@@ -21,6 +21,7 @@ class AboutController extends Controller
     public function setAbout(Request $request): RedirectResponse
     {
         $about = AboutUs::find(1);
+        //dd($request);
         $data = $request->validate([
             'company_name' => ['required'],
             'office' => ['required'],
@@ -29,7 +30,11 @@ class AboutController extends Controller
             'twitter' => ['required'],
             'facebook' => ['required'],
             'linkedin' => ['required'],
+            'privacy_policy' => ['required'],
+            'terms_of_use' => ['required'],
+            'logo' =>  'image|mimes:png|max:2048',
         ]);
+        
         $about->Company_name = $data['company_name'];
         $about->address = $data['office'];
         $about->phone = $data['phone'];
@@ -37,6 +42,14 @@ class AboutController extends Controller
         $about->twitter = $data['twitter'];
         $about->facebook = $data['facebook'];
         $about->linkedin = $data['linkedin'];
+        $about->privacy_policy = $data['privacy_policy'];
+        $about->terms_of_use = $data['terms_of_use'];
+
+        if($request->hasFile('logo')){
+            $logo = $request->hasFile('logo');
+            $logoName = 'logo.png';
+            request()->logo->move(public_path('logo'), $logoName);
+        }
 
         $about->save();
         $request->session()->flash('success', 'Task completed successfully!');
