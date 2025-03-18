@@ -39,6 +39,7 @@ Route::group(['middleware'=> 'auth'], function(){
     Route::post('/setAbout', 'AboutController@setAbout');
 
     Route::get('/message', 'MessageController@getMessage');
+    Route::post('/removeMessage', 'MessageController@removeMessage');
 
     Route::get('/user', 'UserController@getUser');
     Route::post('/setUser', 'UserController@setUser');

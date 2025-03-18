@@ -18,4 +18,23 @@ class MessageController extends Controller
     public function sendMessage(Request $request) :RedirectResponse{
         return view('backend.messsage');
     }
+
+    public function removeMessage(Request $request): RedirectResponse
+    {
+        $validated = $request->validate([
+            'message_id' => ['required'],
+        ]);
+        try{
+            $message = Message::find($validated['message_id']);
+            if ($message) {
+                $message->delete();
+                return redirect('/message')->with('success', 'Message removed successfully');
+            } else {
+                return redirect('/message')->with('error', 'Message not found');
+            }
+        }catch(Exception $e){
+            return redirect('/message')->with('error', 'Error deleting message');;
+        }
+        
+    }
 }

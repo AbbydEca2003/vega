@@ -159,7 +159,7 @@
     </div>
    
    
-    <!-- Modal delete page-->
+    <!-- Modal delete menu-->
     <div class="modal fade" id="removePage" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -176,15 +176,15 @@
             </div>
             </div>
         </div>
-        </div>
+    </div>
 
     
- <script>
-        function change(x){
+<script>
+    function change(x){
         document.getElementById('menu_id').value = x;
         document.getElementById('edit_menu').value = x;
-        }
-    </script>
+    }
+</script>
         @include('backend.footer')  
         @include('backend.successMessage')  
     </body>

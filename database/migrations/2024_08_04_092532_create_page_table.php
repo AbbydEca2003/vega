@@ -19,6 +19,7 @@ class CreatePageTable extends Migration
             $table->string('title');
             $table->string('status');
             $table->text('content');
+            $table->integer('rank');
         });
     }
 

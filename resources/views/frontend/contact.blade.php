@@ -15,6 +15,7 @@
                     </div>
                     <div class="col">
                         <form action="/sendMessage" method="post">
+                        <form action="/" method="post">
                             @csrf
                             <div class="row align-items-stretch mb-5">
                                 <div class="col-md-6">
@@ -28,7 +29,7 @@
                                     </div>
                                     <div class="form-group mb-md-0 p-1">
                                         <!-- Phone number input-->
-                                        <input class="form-control" name="phone" id="phone" type="tel" placeholder="Your Phone *" required>
+                                        <input class="form-control" name="phone" id="phone" type="number" placeholder="Your Phone *" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
